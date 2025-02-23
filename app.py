@@ -11,47 +11,9 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 设置最大请求大小�
 app = cors(app, allow_origin="*", allow_methods=["GET", "POST"])  # 明确允许GET和POST方法
 logger = logging.getLogger(__name__)
 
-@app.route('/generate_outline', methods=['GET', 'POST'])
-async def generate_outline():
-    logger.info(f"Received {request.method} request to /generate_outline")
-    logger.info(f"Request headers: {request.headers}")
-    
-    async with BiddingWorkflow() as workflow:  # 使用异步上下文管理器
-        try:
-            logger.info("Starting outline generation")
-            
-            # 加载输入文件
-            logger.info("Loading input files")
-            workflow.load_input_files()
-            
-            # 生成大纲
-            logger.info("Generating outline")
-            outline_json = await workflow.generate_outline()
-            if not outline_json:
-                logger.error("Failed to generate outline")
-                return jsonify({"status": "error", "message": "Failed to generate outline"}), 500
-                
-            logger.info("Successfully generated outline")
-            
-            # 解析大纲
-            logger.info("Parsing outline JSON")
-            workflow.outline = workflow.parse_outline_json(outline_json)
-            
-            # 保存大纲
-            logger.info("Saving outline")
-            workflow.save_outline()
-            
-            logger.info("Outline generation completed successfully")
-            return jsonify({
-                "status": "success",
-                "outline": workflow.outline.to_dict()
-            })
-        except Exception as e:
-            logger.error(f"Error in generate_outline: {str(e)}", exc_info=True)
-            return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/api/v1/outline', methods=['POST'])
-async def create_outline():
+@app.route('/generate_outline', methods=['POST', 'GET'])
+async def generate_outline():
     try:
         # 获取请求数据
         request_data = await request.get_json()
@@ -99,30 +61,7 @@ async def create_outline():
             "data": None
         }), 500
 
-@app.route('/generate_content', methods=['POST'])
-async def generate_content():
-    workflow = BiddingWorkflow()
-    try:
-        # 加载输入文件
-        workflow.load_input_files()
-        
-        # 加载已保存的大纲
-        with open(Config.OUTLINE_DIR / 'outline.json', 'r', encoding='utf-8') as f:
-            outline_dict = json.load(f)
-            workflow.outline = workflow.parse_outline_json(outline_dict)
-        
-        success = await workflow.generate_full_content_async()
-        if success:
-            return jsonify({"status": "success"})
-        else:
-            return jsonify({"status": "error", "message": "Content generation failed"}), 500
-    except Exception as e:
-        logger.error(f"Error in generate_content: {str(e)}", exc_info=True)
-        return jsonify({"status": "error", "message": str(e)}), 500
-    finally:
-        await workflow.llm_client.close()
-
-@app.route('/generate_document', methods=['POST'])
+@app.route('/generate_document', methods=['POST','GET'])
 async def generate_document():
     workflow = BiddingWorkflow()
     try:
