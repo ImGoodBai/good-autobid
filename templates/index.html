@@ -15,9 +15,20 @@
             height: 100vh;
             overflow-y: auto;
         }
+        .editor-container {
+            height: calc(100vh - 120px);
+            margin-top: 10px;
+        }
         .editor {
-            height: 300px;
-            resize: vertical;
+            height: 100%;
+            resize: none;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -36,39 +47,38 @@
 
             <!-- 主要内容区 -->
             <div class="col-md-10 content py-3">
+                <div class="btn-group mb-3">
+                    <button class="btn btn-primary" id="save-btn">保存</button>
+                    <button class="btn btn-success" id="generate-outline-btn">生成大纲</button>
+                    <button class="btn btn-info" id="generate-doc-btn">生成文档</button>
+                </div>
+                <div id="status" class="alert alert-info d-none"></div>
+                
                 <div class="tab-content">
                     <!-- 需求输入与生成页面 -->
                     <div class="tab-pane fade show active" id="input">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
+                        <div class="row editor-container">
+                            <div class="col-md-6">
                                 <label for="tech-editor" class="form-label">技术需求 (tech.md)</label>
-                                <textarea class="form-control editor" id="tech-editor" rows="12"></textarea>
+                                <textarea class="form-control editor" id="tech-editor"></textarea>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-6">
                                 <label for="score-editor" class="form-label">评分标准 (score.md)</label>
-                                <textarea class="form-control editor" id="score-editor" rows="12"></textarea>
+                                <textarea class="form-control editor" id="score-editor"></textarea>
                             </div>
                         </div>
-                        <div class="btn-group mb-3">
-                            <button class="btn btn-primary" id="save-btn">保存</button>
-                            <button class="btn btn-success" id="generate-outline-btn">生成大纲</button>
-                            <button class="btn btn-info" id="generate-doc-btn">生成文档</button>
-                        </div>
-                        <div id="status" class="alert alert-info d-none"></div>
                     </div>
 
                     <!-- 大纲查看页面 -->
                     <div class="tab-pane fade" id="outline">
                         <div class="mb-3">
-                            <button class="btn btn-secondary mb-3" id="refresh-outline-btn">刷新</button>
-                            <div id="outline-content" class="border p-3 bg-light"></div>
+                            <pre id="outline-content" class="border"></pre>
                         </div>
                     </div>
 
                     <!-- 文档查看页面 -->
                     <div class="tab-pane fade" id="document">
                         <div class="mb-3">
-                            <button class="btn btn-secondary mb-3" id="refresh-doc-btn">刷新</button>
                             <div id="document-content" class="border p-3 bg-light"></div>
                         </div>
                     </div>
@@ -173,7 +183,7 @@
                 try {
                     const result = await callApi('/show_outline');
                     const outlineContent = document.getElementById('outline-content');
-                    outlineContent.innerHTML = marked.parse(JSON.stringify(result.data, null, 2));
+                    outlineContent.textContent = JSON.stringify(result.data, null, 2);
                 } catch (error) {
                     console.error('刷新大纲失败:', error);
                 }
@@ -190,9 +200,9 @@
                 }
             }
 
-            // 刷新按钮事件监听
-            document.getElementById('refresh-outline-btn').addEventListener('click', refreshOutline);
-            document.getElementById('refresh-doc-btn').addEventListener('click', refreshDocument);
+            // 添加标签页切换事件监听
+            document.getElementById('outline-tab').addEventListener('click', refreshOutline);
+            document.getElementById('document-tab').addEventListener('click', refreshDocument);
         });
     </script>
 </body>
