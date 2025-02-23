@@ -89,5 +89,103 @@ async def generate_document():
     finally:
         await workflow.llm_client.close()
 
+@app.route('/show_outline', methods=['GET'])
+async def show_outline():
+    try:
+        with open(Config.OUTLINE_DIR / 'outline.json', 'r', encoding='utf-8') as f:
+            outline_content = json.load(f)
+        return jsonify({
+            "code": 0,
+            "message": "success",
+            "data": outline_content
+        })
+    except Exception as e:
+        logger.error(f"Error reading outline.json: {str(e)}", exc_info=True)
+        return jsonify({
+            "code": 1,
+            "message": str(e),
+            "data": None
+        }), 500
+
+@app.route('/show_document', methods=['GET'])
+async def show_document():
+    try:
+        with open(Config.OUTPUT_DIR / 'content.md', 'r', encoding='utf-8') as f:
+            content = f.read()
+        return jsonify({
+            "code": 0,
+            "message": "success",
+            "data": content
+        })
+    except Exception as e:
+        logger.error(f"Error reading content.md: {str(e)}", exc_info=True)
+        return jsonify({
+            "code": 1,
+            "message": str(e),
+            "data": None
+        }), 500
+
+@app.route('/show_input', methods=['GET'])
+async def show_input():
+    try:
+        score_path = Config.INPUT_DIR / 'score.md'
+        tech_path = Config.INPUT_DIR / 'tech.md'
+        
+        score_content = ''
+        tech_content = ''
+        
+        if score_path.exists():
+            with open(score_path, 'r', encoding='utf-8') as f:
+                score_content = f.read()
+                
+        if tech_path.exists():
+            with open(tech_path, 'r', encoding='utf-8') as f:
+                tech_content = f.read()
+        
+        return jsonify({
+            "code": 0,
+            "message": "success",
+            "data": {
+                "score_md": score_content,
+                "tech_md": tech_content
+            }
+        })
+    except Exception as e:
+        logger.error(f"Error reading input files: {str(e)}", exc_info=True)
+        return jsonify({
+            "code": 1,
+            "message": str(e),
+            "data": None
+        }), 500
+
+@app.route('/save_input', methods=['POST'])
+async def save_input():
+    try:
+        request_data = await request.get_json()
+        score_content = request_data.get('score_md', '')
+        tech_content = request_data.get('tech_md', '')
+        
+        score_path = Config.INPUT_DIR / 'score.md'
+        tech_path = Config.INPUT_DIR / 'tech.md'
+        
+        with open(score_path, 'w', encoding='utf-8') as f:
+            f.write(score_content)
+            
+        with open(tech_path, 'w', encoding='utf-8') as f:
+            f.write(tech_content)
+        
+        return jsonify({
+            "code": 0,
+            "message": "Input files saved successfully",
+            "data": None
+        })
+    except Exception as e:
+        logger.error(f"Error saving input files: {str(e)}", exc_info=True)
+        return jsonify({
+            "code": 1,
+            "message": str(e),
+            "data": None
+        }), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)

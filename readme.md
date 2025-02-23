@@ -6,6 +6,14 @@
 
 这个项目主要是应付八股文的写作，几分钟即可生成10万字技术文档。非常节省时间。
 
+接口：
+http://localhost:5001/generate_outline
+http://localhost:5001/generate_document
+http://localhost:5001/show_outline
+http://localhost:5001/show_document
+http://localhost:5001/show_input
+http://localhost:5001/save_input
+
 
 ## 运行环境
 
