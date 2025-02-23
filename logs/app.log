@@ -1,0 +1,7 @@
+2025-02-23 19:36:27,303 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 19:36:27,351 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('127.0.0.1', 5000)>,)> is serving
+2025-02-23 19:36:27,352 - hypercorn.error - INFO - Running on http://127.0.0.1:5000 (CTRL + C to quit)
+2025-02-23 19:37:55,907 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 19:41:05,353 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 19:41:05,390 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('127.0.0.1', 5000)>,)> is serving
+2025-02-23 19:41:05,391 - hypercorn.error - INFO - Running on http://127.0.0.1:5000 (CTRL + C to quit)
