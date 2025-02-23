@@ -603,3 +603,330 @@ ssl.SSLError: [SSL: APPLICATION_DATA_AFTER_CLOSE_NOTIFY] application data after 
 2025-02-23 21:05:19,525 - asyncio - DEBUG - Using selector: KqueueSelector
 2025-02-23 21:05:19,559 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
 2025-02-23 21:05:19,560 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:09:06,920 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:09:07,998 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:09:08,041 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:09:08,042 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:10:21,312 - asyncio - WARNING - Executing <Task pending name='Task-2' coro=<observe_changes() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/utils.py:125> cb=[gather.<locals>._done_callback() at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:767] created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/app.py:873> took 0.115 seconds
+2025-02-23 21:10:23,412 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 57084): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 57084)>
+2025-02-23 21:10:23,415 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 57085): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 57085)>
+2025-02-23 21:10:31,360 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 57138): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 57138)>
+2025-02-23 21:10:31,361 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 57140): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 57140)>
+2025-02-23 21:14:06,970 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:14:08,553 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:14:08,599 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:14:08,599 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:15:11,056 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 58823): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 58823)>
+2025-02-23 21:15:11,059 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 58825): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 58825)>
+2025-02-23 21:30:12,343 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:30:14,087 - __main__ - WARNING - WebUI build directory not found. Please build the React app first.
+2025-02-23 21:30:14,087 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:30:14,135 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:30:14,136 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:30:31,530 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:30:32,659 - __main__ - WARNING - WebUI build directory not found. Please build the React app first.
+2025-02-23 21:30:32,659 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:30:32,698 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:30:32,698 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:35:54,621 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:35:56,411 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:35:56,459 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:35:56,460 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:36:32,323 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50769): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50769)>
+2025-02-23 21:36:32,325 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50770): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50770)>
+2025-02-23 21:36:37,670 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50818): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50818)>
+2025-02-23 21:36:37,690 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50821): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50821)>
+2025-02-23 21:36:50,352 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50909): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50909)>
+2025-02-23 21:36:59,554 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 50968): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 50968)>
+2025-02-23 21:37:20,306 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51095): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51095)>
+2025-02-23 21:37:23,596 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51116): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51116)>
+2025-02-23 21:37:23,596 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51117): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51117)>
+2025-02-23 21:37:30,651 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51163): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51163)>
+2025-02-23 21:37:30,684 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:37:52,288 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51297): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51297)>
+2025-02-23 21:37:52,299 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:40:58,949 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52564): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52564)>
+2025-02-23 21:40:58,950 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52565): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52565)>
+2025-02-23 21:40:59,049 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52568): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52568)>
+2025-02-23 21:41:43,801 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52855): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52855)>
+2025-02-23 21:41:46,073 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52867): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52867)>
+2025-02-23 21:41:46,074 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 52868): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 52868)>
+2025-02-23 21:41:50,276 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:42:31,759 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 53159): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 53159)>
+2025-02-23 21:42:31,775 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:42:58,813 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 53317): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 53317)>
+2025-02-23 21:43:17,585 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 53501): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 53501)>
+2025-02-23 21:43:17,601 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:44:20,655 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 54051): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 54051)>
+2025-02-23 21:44:20,656 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 54052): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 54052)>
+2025-02-23 21:44:20,669 - llmkey - INFO - LLM client initialized successfully
+2025-02-23 21:44:20,669 - __main__ - INFO - Starting outline generation
+2025-02-23 21:44:20,669 - __main__ - INFO - Loading input files
+2025-02-23 21:44:20,670 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-23 21:44:20,670 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-23 21:44:20,671 - __main__ - INFO - Generating outline
+2025-02-23 21:44:20,671 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-23 21:44:20,683 - llmkey - INFO - Created new session with base URL: https://openrouter.ai/api/v1/
+2025-02-23 21:44:20,683 - llmkey - DEBUG - Sending request with params: {"model": "google/gemini-2.0-flash-lite-preview-02-05:free", "messages": [{"role": "system", "content": "你是投标文件编制专家。你的任务是根据技术要求和评分标准，生成一份测试版的投标文件大纲，只需要1个章节，每个章节包含一个节，每个节包含一个子节。\n你需要确保：\n1. 所有回复必须是标准的 JSON 格式\n2. 大纲结构完整，包含章、节、子节三级标题\n3. 一级标题与评分标准对应\n4. 涵盖所有技术要求\n5. 三级标题下有详细的内容边界描述\n\n输出格式必须严格遵循：\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 xxx\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 xxx\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 xxx\",\n                            \"content_summary\": \"xxx\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"}, {"role": "user", "content": "这是项目的技术要求，请仔细阅读并记住这些要求：\n\n【技术要求】\n本项目旨在采购并安装一套智能路灯系统，用于提升城市照明效率，实现节能环保。系统需具备远程控制、自动调光、故障报警等功能。\n\n二、技术要求2\n硬件要求 \n\n路灯灯具：LED光源，功率不低于100W，寿命≥50,000小时。\n\n控制器：支持4G/5G通信，具备远程控制功能。\n\n传感器：光照传感器、温度传感器、湿度传感器。\n\n电源：输入电压220V±10%，具备过压、过流保护。\n\n软件要求\n\n远程管理平台：支持Web端和移动端访问，实时监控路灯状态。\n\n自动调光：根据环境光照自动调节亮度，节能模式可节省至少30%电能。\n\n故障报警：系统自动检测故障并发送报警信息至管理平台。\n\n数据存储：至少保存90天的历史数据，支持数据导出。\n\n安装与维护\n\n安装：提供完整的安装方案，确保路灯安装稳固，布线整齐。\n\n维护：提供2年免费维护服务，响应时间不超过24小时。"}, {"role": "user", "content": "这是项目的评分标准，请仔细阅读并记住这些标准：\n\n【评分标准】\n技术方案（40分）\n\n方案完整性（10分）：方案是否涵盖所有技术要求。\n\n创新性（10分）：方案是否具备创新点，如智能算法优化等。\n\n可行性（10分）：方案是否切实可行，具备可操作性。\n\n节能效果（10分）：方案是否具备显著的节能效果。\n产品质量（30分）\n\n灯具质量（10分）：灯具是否符合技术参数，寿命是否达标。\n\n控制器性能（10分）：控制器是否稳定，通信是否可靠。\n\n传感器精度（10分）：传感器是否精准，数据是否可靠。\n售后服务（20分）\n\n维护响应时间（10分）：是否承诺24小时内响应。\n\n维护服务质量（10分）：是否提供定期巡检和故障排查。\n价格（10分）\n\n报价合理性（10分）：报价是否合理，性价比是否高。"}, {"role": "user", "content": "现在请基于之前提供的技术要求和评分标准，生成一份完整的投标文件大纲。要求：\n1. 确保大纲结构完整\n2. 确保一级标题与评分标准对应\n3. 确保涵盖所有技术要求\n4. 确保三级标题下有详细的内容边界描述\n5. 直接返回完整的 JSON，不要有任何其他文字\n6. 确保 JSON 格式正确，不要截断"}], "temperature": 0.7, "max_tokens": 8192, "top_p": 0.1}
+2025-02-23 21:44:20,690 - asyncio - DEBUG - Get address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+2025-02-23 21:44:20,708 - asyncio - DEBUG - Getting address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 18.522ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.48.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.49.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.67.40.104', 443))]
+2025-02-23 21:44:20,925 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10792deb0> starts SSL handshake
+2025-02-23 21:44:21,138 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10792deb0>: SSL handshake took 212.2 ms
+2025-02-23 21:44:21,139 - asyncio - DEBUG - <asyncio.TransportSocket fd=13, family=2, type=1, proto=6, laddr=('192.168.31.119', 54055), raddr=('104.22.48.189', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x1079f2bd0>, <aiohttp.client_proto.ResponseHandler object at 0x1079ebd70>)
+2025-02-23 21:44:27,594 - llmkey - DEBUG - Raw API response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1740318261-G2aP0q30KJWJwzWPBD1m","provider":"Google","model":"google/gemini-2.0-flash-lite-preview-02-05","object":"chat.completion","created":1740318261,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"STOP","index":0,"message":{"role":"assistant","content":"```json\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 技术方案\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 技术方案概述\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 方案完整性与创新性\",\n                            \"content_summary\": \"详细阐述智能路灯系统方案，涵盖远程控制、自动调光、故障报警等所有技术要求。说明方案的创新点，例如采用的智能算法优化，提升节能效果。具体描述方案如何实现远程控制、自动调光（包括调光算法）、故障报警（报警机制和信息推送）。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.1.2 方案可行性与节能效果\",\n                            \"content_summary\": \"论证方案的可行性，包括技术成熟度、实施难度、风险评估及应对措施。详细说明自动调光系统的节能效果，提供数据支持，证明节能模式下可节省至少30%的电能。说明如何通过光照传感器、温度传感器、湿度传感器等实现自动调光。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第二章 产品质量\",\n            \"sections\": [\n                {\n                    \"section_title\": \"2.1 产品技术参数\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"2.1.1 灯具质量\",\n                            \"content_summary\": \"详细描述LED路灯灯具的技术参数，包括功率（不低于100W）、光效、色温、显色指数等。提供灯具的寿命测试报告，证明其寿命≥50,000小时。提供灯具的质量认证证书。\"\n                        },\n                        {\n                            \"sub_section_title\": \"2.1.2 控制器性能\",\n                            \"content_summary\": \"详细描述控制器的技术参数，包括支持的通信方式（4G/5G）、远程控制功能、功耗等。说明控制器在各种环境下的稳定性和可靠性。提供控制器相关的测试报告和认证。\"\n                        },\n                        {\n                            \"sub_section_title\": \"2.1.3 传感器精度\",\n                            \"content_summary\": \"详细描述光照传感器、温度传感器、湿度传感器的技术参数，包括测量范围、精度、响应时间等。说明传感器的数据采集方式和数据传输方式。提供传感器相关的测试报告和校准报告。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第三章 售后服务\",\n            \"sections\": [\n                {\n                    \"section_title\": \"3.1 售后服务承诺\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"3.1.1 维护响应时间\",\n                            \"content_summary\": \"明确承诺2年免费维护服务，并详细说明响应时间不超过24小时的保障措施，包括服务流程、人员配备、备件储备等。提供24小时响应的承诺函。\"\n                        },\n                        {\n                            \"sub_section_title\": \"3.1.2 维护服务质量\",\n                            \"content_summary\": \"详细描述维护服务内容，包括定期巡检、故障排查、软件升级、硬件更换等。说明维护团队的专业性和服务能力。提供详细的维护服务计划，包括巡检频率、维护标准等。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第四章 价格\",\n            \"sections\": [\n                {\n                    \"section_title\": \"4.1 报价说明\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"4.1.1 报价合理性\",\n                            \"content_summary\": \"提供详细的报价清单，包括路灯灯具、控制器、传感器、安装费用、维护费用等。说明报价的构成，并与市场价格进行对比，证明报价的合理性。说明产品的性价比优势。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第五章 附件\",\n            \"sections\": [\n                {\n                    \"section_title\": \"5.1 附件清单\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"5.1.1 附件列表\",\n                            \"content_summary\": \"列出所有附件，包括但不限于：产品技术参数、测试报告、认证证书、安装方案、维护方案、公司资质、业绩证明等。\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}\n```","refusal":null}}],"usage":{"prompt_tokens":811,"completion_tokens":1086,"total_tokens":1897}}
+2025-02-23 21:44:27,596 - bidding_workflow - INFO - Saved outline JSON to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.json
+2025-02-23 21:44:27,597 - bidding_workflow - INFO - Saved outline Markdown to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.md
+2025-02-23 21:45:02,250 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 54280): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 54280)>
+2025-02-23 21:45:02,276 - __main__ - ERROR - Error in create_outline: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 379, in get_json
+    result = self.json_module.loads(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/json/provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 23, in generate_outline
+    request_data = await request.get_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 384, in get_json
+    result = self.on_json_loading_failed(error)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/wrappers/request.py", line 401, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON: {error}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON: Expecting value: line 1 column 1 (char 0)
+2025-02-23 21:46:09,127 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-23 21:46:10,832 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-23 21:46:10,884 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-23 21:46:10,884 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-23 21:50:30,964 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 56370): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 56370)>
+2025-02-23 21:50:31,011 - llmkey - INFO - LLM client initialized successfully
+2025-02-23 21:50:31,011 - __main__ - INFO - Starting outline generation
+2025-02-23 21:50:31,012 - __main__ - INFO - Loading input files
+2025-02-23 21:50:31,013 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-23 21:50:31,014 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-23 21:50:31,014 - __main__ - INFO - Generating outline
+2025-02-23 21:50:31,014 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-23 21:50:31,020 - llmkey - INFO - Created new session with base URL: https://openrouter.ai/api/v1/
+2025-02-23 21:50:31,021 - llmkey - DEBUG - Sending request with params: {"model": "google/gemini-2.0-flash-lite-preview-02-05:free", "messages": [{"role": "system", "content": "你是投标文件编制专家。你的任务是根据技术要求和评分标准，生成一份测试版的投标文件大纲，只需要1个章节，每个章节包含一个节，每个节包含一个子节。\n你需要确保：\n1. 所有回复必须是标准的 JSON 格式\n2. 大纲结构完整，包含章、节、子节三级标题\n3. 一级标题与评分标准对应\n4. 涵盖所有技术要求\n5. 三级标题下有详细的内容边界描述\n\n输出格式必须严格遵循：\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 xxx\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 xxx\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 xxx\",\n                            \"content_summary\": \"xxx\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"}, {"role": "user", "content": "这是项目的技术要求，请仔细阅读并记住这些要求：\n\n【技术要求】\n本项目旨在采购并安装一套智能路灯系统，用于提升城市照明效率，实现节能环保。系统需具备远程控制、自动调光、故障报警等功能。\n\n二、技术要求2\n硬件要求 \n\n路灯灯具：LED光源，功率不低于100W，寿命≥50,000小时。\n\n控制器：支持4G/5G通信，具备远程控制功能。\n\n传感器：光照传感器、温度传感器、湿度传感器。\n\n电源：输入电压220V±10%，具备过压、过流保护。\n\n软件要求\n\n远程管理平台：支持Web端和移动端访问，实时监控路灯状态。\n\n自动调光：根据环境光照自动调节亮度，节能模式可节省至少30%电能。\n\n故障报警：系统自动检测故障并发送报警信息至管理平台。\n\n数据存储：至少保存90天的历史数据，支持数据导出。\n\n安装与维护\n\n安装：提供完整的安装方案，确保路灯安装稳固，布线整齐。\n\n维护：提供2年免费维护服务，响应时间不超过24小时。"}, {"role": "user", "content": "这是项目的评分标准，请仔细阅读并记住这些标准：\n\n【评分标准】\n技术方案（40分）\n\n方案完整性（10分）：方案是否涵盖所有技术要求。\n\n创新性（10分）：方案是否具备创新点，如智能算法优化等。\n\n可行性（10分）：方案是否切实可行，具备可操作性。\n\n节能效果（10分）：方案是否具备显著的节能效果。\n产品质量（30分）\n\n灯具质量（10分）：灯具是否符合技术参数，寿命是否达标。\n\n控制器性能（10分）：控制器是否稳定，通信是否可靠。\n\n传感器精度（10分）：传感器是否精准，数据是否可靠。\n售后服务（20分）\n\n维护响应时间（10分）：是否承诺24小时内响应。\n\n维护服务质量（10分）：是否提供定期巡检和故障排查。\n价格（10分）\n\n报价合理性（10分）：报价是否合理，性价比是否高。"}, {"role": "user", "content": "现在请基于之前提供的技术要求和评分标准，生成一份完整的投标文件大纲。要求：\n1. 确保大纲结构完整\n2. 确保一级标题与评分标准对应\n3. 确保涵盖所有技术要求\n4. 确保三级标题下有详细的内容边界描述\n5. 直接返回完整的 JSON，不要有任何其他文字\n6. 确保 JSON 格式正确，不要截断"}], "temperature": 0.7, "max_tokens": 8192, "top_p": 0.1}
+2025-02-23 21:50:31,025 - asyncio - DEBUG - Get address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+2025-02-23 21:50:31,065 - asyncio - DEBUG - Getting address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 39.785ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.49.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.48.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.67.40.104', 443))]
+2025-02-23 21:50:31,254 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10cc1e0c0> starts SSL handshake
+2025-02-23 21:50:31,444 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10cc1e0c0>: SSL handshake took 189.6 ms
+2025-02-23 21:50:31,444 - asyncio - DEBUG - <asyncio.TransportSocket fd=13, family=2, type=1, proto=6, laddr=('192.168.31.119', 56371), raddr=('104.22.49.189', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10cc9d9d0>, <aiohttp.client_proto.ResponseHandler object at 0x10cbc6e10>)
+2025-02-23 21:50:37,462 - llmkey - DEBUG - Raw API response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1740318632-vp0rSfdwKxLbj5QgIwNI","provider":"Google","model":"google/gemini-2.0-flash-lite-preview-02-05","object":"chat.completion","created":1740318632,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"STOP","index":0,"message":{"role":"assistant","content":"```json\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 技术方案\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 技术方案概述\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 方案完整性与创新性\",\n                            \"content_summary\": \"详细阐述智能路灯系统方案，涵盖远程控制、自动调光、故障报警等所有技术要求。说明方案的创新点，例如采用的智能算法优化，提升节能效果。具体描述方案如何实现远程控制、自动调光（包括调光算法）、故障报警（报警机制和信息推送方式）。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.1.2 方案可行性与节能效果\",\n                            \"content_summary\": \"论证方案的可行性，包括技术实现的可行性、安装实施的可行性、后期维护的可行性。详细说明自动调光系统的节能效果，提供数据支持，说明节能模式下电能节省比例，并分析节能效果的实现机制。说明如何通过光照传感器、温度传感器、湿度传感器等实现自动调光。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第二章 产品质量\",\n            \"sections\": [\n                {\n                    \"section_title\": \"2.1 产品技术参数\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"2.1.1 灯具质量\",\n                            \"content_summary\": \"详细描述LED路灯灯具的技术参数，包括功率、光效、色温、显色指数等。提供灯具的详细技术规格书，证明灯具功率不低于100W，寿命≥50,000小时。提供灯具的质量认证证书。\"\n                        },\n                        {\n                            \"sub_section_title\": \"2.1.2 控制器性能\",\n                            \"content_summary\": \"详细描述控制器的技术参数，包括通信方式、控制功能、功耗等。说明控制器支持4G/5G通信，具备远程控制功能。提供控制器技术规格书，说明控制器的稳定性和可靠性，以及通信的可靠性。说明控制器如何实现远程控制。\"\n                        },\n                        {\n                            \"sub_section_title\": \"2.1.3 传感器精度\",\n                            \"content_summary\": \"详细描述传感器的技术参数，包括类型、精度、量程等。说明系统采用光照传感器、温度传感器、湿度传感器。提供传感器技术规格书，说明传感器的精度和数据可靠性。说明传感器如何与控制器和管理平台交互。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第三章 售后服务\",\n            \"sections\": [\n                {\n                    \"section_title\": \"3.1 售后服务承诺\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"3.1.1 维护响应时间\",\n                            \"content_summary\": \"明确承诺提供2年免费维护服务，响应时间不超过24小时。详细说明售后服务流程，包括故障报修、响应时间、维修方案等。提供售后服务团队的资质和联系方式。\"\n                        },\n                        {\n                            \"sub_section_title\": \"3.1.2 维护服务质量\",\n                            \"content_summary\": \"详细描述维护服务内容，包括定期巡检、故障排查、备品备件等。说明维护服务质量保证措施，例如服务标准、服务流程、客户反馈机制等。提供维护服务案例。\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"chapter_title\": \"第四章 价格\",\n            \"sections\": [\n                {\n                    \"section_title\": \"4.1 报价说明\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"4.1.1 报价合理性\",\n                            \"content_summary\": \"提供详细的报价清单，包括路灯灯具、控制器、传感器、安装费用、维护费用等。说明报价的构成，并分析报价的合理性，与其他同类产品的对比，说明性价比优势。提供价格构成明细。\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}\n```","refusal":null}}],"usage":{"prompt_tokens":811,"completion_tokens":1001,"total_tokens":1812}}
+2025-02-23 21:50:37,464 - bidding_workflow - INFO - Saved outline JSON to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.json
+2025-02-23 21:50:37,464 - bidding_workflow - INFO - Saved outline Markdown to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.md
+2025-02-23 21:50:37,471 - asyncio - DEBUG - <_SelectorSocketTransport fd=8 read=polling write=<idle, bufsize=0>> received EOF
+2025-02-23 21:50:37,473 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 56426): <socket.socket fd=13, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 56426)>

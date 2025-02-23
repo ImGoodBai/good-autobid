@@ -1,22 +1,29 @@
-from quart import Quart, jsonify, request
+from quart import Quart, jsonify, request, render_template
 from quart_cors import cors
 from bidding_workflow import BiddingWorkflow
 import logging
 from config import Config
 import json
 from datetime import datetime
+import os
 
 app = Quart(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 设置最大请求大小为16MB
 app = cors(app, allow_origin="*", allow_methods=["GET", "POST"])  # 明确允许GET和POST方法
 logger = logging.getLogger(__name__)
 
+@app.route('/')
+async def index():
+    return await render_template('index.html')
 
 @app.route('/generate_outline', methods=['POST', 'GET'])
 async def generate_outline():
     try:
-        # 获取请求数据
-        request_data = await request.get_json()
+        # 获取请求数据 (make it optional)
+        try:
+            request_data = await request.get_json()
+        except:
+            request_data = {}
         
         async with BiddingWorkflow() as workflow:
             logger.info("Starting outline generation")
@@ -188,4 +195,7 @@ async def save_input():
         }), 500
 
 if __name__ == '__main__':
+    # 检查webui目录是否存在
+    if not os.path.exists('templates'):
+        logger.warning("Templates directory not found.")
     app.run(host='0.0.0.0', debug=True, port=5001)
