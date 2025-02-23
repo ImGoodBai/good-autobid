@@ -1,4 +1,5 @@
 from quart import Quart, jsonify, request
+from quart_cors import cors
 from bidding_workflow import BiddingWorkflow
 import logging
 from config import Config
@@ -6,10 +7,15 @@ import json
 from datetime import datetime
 
 app = Quart(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 设置最大请求大小为16MB
+app = cors(app, allow_origin="*", allow_methods=["GET", "POST"])  # 明确允许GET和POST方法
 logger = logging.getLogger(__name__)
 
-@app.route('/generate_outline', methods=['POST'])
+@app.route('/generate_outline', methods=['GET', 'POST'])
 async def generate_outline():
+    logger.info(f"Received {request.method} request to /generate_outline")
+    logger.info(f"Request headers: {request.headers}")
+    
     async with BiddingWorkflow() as workflow:  # 使用异步上下文管理器
         try:
             logger.info("Starting outline generation")
@@ -145,4 +151,4 @@ async def generate_document():
         await workflow.llm_client.close()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000) 
+    app.run(host='0.0.0.0', debug=True, port=5001)
