@@ -308,6 +308,41 @@ async def save_prompts():
         logger.error(f"Error saving prompts: {str(e)}", exc_info=True)
         return jsonify({"success": False, "error": str(e)}), 500
 
+@app.route('/api/outline', methods=['GET'])
+async def get_outline():
+    try:
+        outline_file = Config.OUTLINE_DIR / 'outline.json'
+        if not outline_file.exists():
+            return jsonify({"outline": []}), 200
+            
+        with open(outline_file, 'r', encoding='utf-8') as f:
+            outline_data = json.load(f)
+            
+        return jsonify(outline_data)
+    except Exception as e:
+        logger.error(f"Error reading outline: {str(e)}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/save_outline', methods=['POST'])
+async def save_outline():
+    try:
+        outline_data = await request.get_json()
+        if not isinstance(outline_data, dict):
+            return jsonify({"error": "Invalid outline format"}), 400
+
+        # 确保输出目录存在
+        os.makedirs(Config.OUTLINE_DIR, exist_ok=True)
+        
+        # 保存大纲文件
+        outline_file = Config.OUTLINE_DIR / 'outline.json'
+        with open(outline_file, 'w', encoding='utf-8') as f:
+            json.dump(outline_data, f, ensure_ascii=False, indent=2)
+            
+        return jsonify({"message": "Outline saved successfully"})
+    except Exception as e:
+        logger.error(f"Error saving outline: {str(e)}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     # 检查webui目录是否存在
     if not os.path.exists('templates'):
