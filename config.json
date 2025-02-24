@@ -1,0 +1,26 @@
+{
+    "llm": {
+        "api_key": "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",
+        "api_base": "https://openrouter.ai/api/v1",
+        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
+        "max_tokens": 8192,
+        "temperature": 0.7,
+        "top_p": 0.1,
+        "timeout": 30
+    },
+    "retry": {
+        "max_retries": 3,
+        "delay": 2,
+        "backoff": 1.5
+    },
+    "api": {
+        "request_timeout": 30
+    },
+    "proxy": {
+        "enabled": false,
+        "urls": {
+            "http": "http://127.0.0.1:33210",
+            "https": "http://127.0.0.1:33210"
+        }
+    }
+}

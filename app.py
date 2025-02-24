@@ -194,6 +194,66 @@ async def save_input():
             "data": None
         }), 500
 
+# 配置相关的路由
+@app.route('/api/config', methods=['GET'])
+def get_config():
+    """获取当前配置"""
+    return jsonify(Config.get_config())
+
+@app.route('/api/config', methods=['POST'])
+def update_config():
+    """更新配置"""
+    try:
+        new_config = request.json
+        
+        # 更新LLM配置
+        if 'llm' in new_config:
+            llm_config = new_config['llm']
+            Config.LLM_API_KEY = llm_config.get('api_key', Config.LLM_API_KEY)
+            Config.LLM_API_BASE = llm_config.get('api_base', Config.LLM_API_BASE)
+            Config.LLM_MODEL = llm_config.get('model', Config.LLM_MODEL)
+            Config.MAX_TOKENS = llm_config.get('max_tokens', Config.MAX_TOKENS)
+            Config.TEMPERATURE = llm_config.get('temperature', Config.TEMPERATURE)
+            Config.TOP_P = llm_config.get('top_p', Config.TOP_P)
+            Config.TIMEOUT = llm_config.get('timeout', Config.TIMEOUT)
+        
+        # 更新重试配置
+        if 'retry' in new_config:
+            retry_config = new_config['retry']
+            Config.MAX_RETRIES = retry_config.get('max_retries', Config.MAX_RETRIES)
+            Config.RETRY_DELAY = retry_config.get('delay', Config.RETRY_DELAY)
+            Config.RETRY_BACKOFF = retry_config.get('backoff', Config.RETRY_BACKOFF)
+        
+        # 更新API配置
+        if 'api' in new_config:
+            api_config = new_config['api']
+            Config.REQUEST_TIMEOUT = api_config.get('request_timeout', Config.REQUEST_TIMEOUT)
+        
+        # 更新代理配置
+        if 'proxy' in new_config:
+            proxy_config = new_config['proxy']
+            Config.USE_PROXY = proxy_config.get('enabled', Config.USE_PROXY)
+            if 'urls' in proxy_config:
+                Config.PROXY_URLS = proxy_config['urls']
+        
+        # 保存到配置文件
+        Config.save_config()
+        
+        return jsonify({
+            'status': 'success',
+            'config': Config.get_config()
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 400
+
+@app.route('/config')
+async def config_page():
+    """配置页面"""
+    return await render_template('config.html')
+
 if __name__ == '__main__':
     # 检查webui目录是否存在
     if not os.path.exists('templates'):
