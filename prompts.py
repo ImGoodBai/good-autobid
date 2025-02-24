@@ -1,83 +1,44 @@
+from pathlib import Path
+import json
+
 class Prompts:
     # 1. 大纲生成相关提示词
-    OUTLINE_SYSTEM_ROLE = """你是投标文件编制专家。你的任务是根据技术要求和评分标准，生成一份测试版的投标文件大纲，只需要1个章节，每个章节包含一个节，每个节包含一个子节。
-你需要确保：
-1. 所有回复必须是标准的 JSON 格式
-2. 大纲结构完整，包含章、节、子节三级标题
-3. 一级标题与评分标准对应
-4. 涵盖所有技术要求
-5. 三级标题下有详细的内容边界描述
-
-输出格式必须严格遵循：
-{
-    "body_paragraphs": [
-        {
-            "chapter_title": "第一章 xxx",
-            "sections": [
-                {
-                    "section_title": "1.1 xxx",
-                    "sub_sections": [
-                        {
-                            "sub_section_title": "1.1.1 xxx",
-                            "content_summary": "xxx"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}"""
-
-    OUTLINE_TECH_USER = """这是项目的技术要求，请仔细阅读并记住这些要求：
-
-【技术要求】
-{tech_content}"""
-
-    OUTLINE_SCORE_USER = """这是项目的评分标准，请仔细阅读并记住这些标准：
-
-【评分标准】
-{score_content}"""
-
-    OUTLINE_GENERATE_USER = """现在请基于之前提供的技术要求和评分标准，生成一份完整的投标文件大纲。要求：
-1. 确保大纲结构完整
-2. 确保一级标题与评分标准对应
-3. 确保涵盖所有技术要求
-4. 确保三级标题下有详细的内容边界描述
-5. 直接返回完整的 JSON，不要有任何其他文字
-6. 确保 JSON 格式正确，不要截断"""
+    OUTLINE_SYSTEM_ROLE = None
+    OUTLINE_TECH_USER = None
+    OUTLINE_SCORE_USER = None
+    OUTLINE_GENERATE_USER = None
 
     # 2. 内容生成相关提示词
-    CONTENT_SYSTEM_ROLE = """你是一名专业的技术方案撰写专家，擅长编写 IT 信息化项目的技术文档。
-你需要确保：
-1. 使用专业、准确的技术术语
-2. 采用连续行文的方式，避免过多的分点、分条
-3. 保持客观、严谨的科技文档风格
-4. 确保内容的连贯性和完整性
-5. 每个三级标题的内容不少于5000字
-6. 适当使用专业的图表描述（使用 mermaid 语法）"""
+    CONTENT_SYSTEM_ROLE = None
+    CONTENT_INIT_USER = None
+    CONTENT_SECTION_USER = None
 
-    CONTENT_INIT_USER = """请记住以下项目背景信息，后续我将逐段发送三级标题及其内容边界，请你据此生成具体内容：
+    @classmethod
+    def load_prompts(cls):
+        """从配置文件加载提示词模板"""
+        config_file = Path(__file__).parent / "config.json"
+        
+        if not config_file.exists():
+            raise FileNotFoundError("配置文件不存在")
+            
+        with open(config_file, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+            
+        # 从配置中加载prompts部分
+        prompts_config = config.get('prompts', {})
+        
+        # 加载outline相关提示词
+        outline_config = prompts_config.get('outline', {})
+        cls.OUTLINE_SYSTEM_ROLE = outline_config.get('system_role')
+        cls.OUTLINE_TECH_USER = outline_config.get('tech_user')
+        cls.OUTLINE_SCORE_USER = outline_config.get('score_user')
+        cls.OUTLINE_GENERATE_USER = outline_config.get('generate_user')
+        
+        # 加载content相关提示词
+        content_config = prompts_config.get('content', {})
+        cls.CONTENT_SYSTEM_ROLE = content_config.get('system_role')
+        cls.CONTENT_INIT_USER = content_config.get('init_user')
+        cls.CONTENT_SECTION_USER = content_config.get('section_user')
 
-【技术要求】
-{tech_content}
-
-【评分标准】
-{score_content}
-
-【文档大纲】
-{outline}"""
-
-    CONTENT_SECTION_USER = """请基于已预置的背景信息，生成以下章节的具体内容：
-
-【标题】
-{title}
-
-【内容边界】
-{content_summary}
-
-要求：
-1. 只生成正文内容，不要包含标题
-2. 内容不少于5000字
-3. 使用连续行文的方式
-4. 保持专业、严谨的文档风格
-5. 确保与整体技术方案的一致性"""
+# 初始化时自动加载提示词
+Prompts.load_prompts()

@@ -3191,3 +3191,171 @@ TypeError: The response value type (coroutine) is not valid
 2025-02-24 09:36:47,391 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 56706): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 56706)>
 2025-02-24 09:36:47,392 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 56707): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 56707)>
 2025-02-24 09:36:47,874 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 56713): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 56713)>
+2025-02-24 09:44:47,143 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-24 09:44:49,163 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-24 09:44:49,222 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-24 09:44:49,223 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-24 09:45:44,002 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-24 09:45:45,658 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-24 09:45:45,709 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-24 09:45:45,709 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-24 09:51:11,040 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-24 09:52:23,746 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-24 09:52:23,800 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-24 09:52:23,801 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-24 09:52:30,564 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62388): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62388)>
+2025-02-24 09:52:30,567 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62389): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62389)>
+2025-02-24 09:52:30,759 - asyncio - WARNING - Executing <Task finished name='Task-14' coro=<ASGIHTTPConnection.handle_request() done, defined at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/asgi.py:106> result=None created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:695> took 0.162 seconds
+2025-02-24 09:52:31,024 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62402): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62402)>
+2025-02-24 09:52:48,119 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62496): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62496)>
+2025-02-24 09:52:48,144 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 09:52:48,144 - __main__ - INFO - Starting outline generation
+2025-02-24 09:52:48,144 - __main__ - INFO - Loading input files
+2025-02-24 09:52:48,145 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-24 09:52:48,145 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 09:52:48,146 - __main__ - INFO - Generating outline
+2025-02-24 09:52:48,146 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 09:52:48,146 - bidding_workflow - ERROR - Error generating outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:52:48,146 - __main__ - ERROR - Error in create_outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 37, in generate_outline
+    outline_json = await workflow.generate_outline()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/good/Documents/vscode_projects/autobid-main/bidding_workflow.py", line 244, in generate_outline
+    messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:52:55,201 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62534): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62534)>
+2025-02-24 09:52:55,226 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 09:52:55,226 - __main__ - INFO - Starting outline generation
+2025-02-24 09:52:55,226 - __main__ - INFO - Loading input files
+2025-02-24 09:52:55,227 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-24 09:52:55,228 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 09:52:55,228 - __main__ - INFO - Generating outline
+2025-02-24 09:52:55,228 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 09:52:55,229 - bidding_workflow - ERROR - Error generating outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:52:55,231 - __main__ - ERROR - Error in create_outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 37, in generate_outline
+    outline_json = await workflow.generate_outline()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/good/Documents/vscode_projects/autobid-main/bidding_workflow.py", line 244, in generate_outline
+    messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:26,160 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62708): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62708)>
+2025-02-24 09:53:26,184 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62710): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62710)>
+2025-02-24 09:53:26,213 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 09:53:26,214 - __main__ - INFO - Starting outline generation
+2025-02-24 09:53:26,214 - __main__ - INFO - Loading input files
+2025-02-24 09:53:26,215 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-24 09:53:26,216 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 09:53:26,216 - __main__ - INFO - Generating outline
+2025-02-24 09:53:26,216 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 09:53:26,216 - bidding_workflow - ERROR - Error generating outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:26,217 - __main__ - ERROR - Error in create_outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 37, in generate_outline
+    outline_json = await workflow.generate_outline()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/good/Documents/vscode_projects/autobid-main/bidding_workflow.py", line 244, in generate_outline
+    messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:26,283 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 09:53:26,284 - __main__ - INFO - Starting outline generation
+2025-02-24 09:53:26,284 - __main__ - INFO - Loading input files
+2025-02-24 09:53:26,285 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-24 09:53:26,287 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 09:53:26,287 - __main__ - INFO - Generating outline
+2025-02-24 09:53:26,288 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 09:53:26,289 - bidding_workflow - ERROR - Error generating outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:26,290 - __main__ - ERROR - Error in create_outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 37, in generate_outline
+    outline_json = await workflow.generate_outline()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/good/Documents/vscode_projects/autobid-main/bidding_workflow.py", line 244, in generate_outline
+    messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:36,468 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 62763): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 62763)>
+2025-02-24 09:53:36,496 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 09:53:36,497 - __main__ - INFO - Starting outline generation
+2025-02-24 09:53:36,497 - __main__ - INFO - Loading input files
+2025-02-24 09:53:36,498 - bidding_workflow - INFO - Loaded tech file, size: 378 chars
+2025-02-24 09:53:36,500 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 09:53:36,500 - __main__ - INFO - Generating outline
+2025-02-24 09:53:36,500 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 09:53:36,500 - bidding_workflow - ERROR - Error generating outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:53:36,501 - __main__ - ERROR - Error in create_outline: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+Traceback (most recent call last):
+  File "/Users/good/Documents/vscode_projects/autobid-main/app.py", line 37, in generate_outline
+    outline_json = await workflow.generate_outline()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/good/Documents/vscode_projects/autobid-main/bidding_workflow.py", line 244, in generate_outline
+    messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Prompts' has no attribute 'OUTLINE_SYSTEM_ROLE'
+2025-02-24 09:54:34,089 - asyncio - DEBUG - Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+2025-02-24 10:06:52,712 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-02-24 10:06:52,767 - asyncio - INFO - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> is serving
+2025-02-24 10:06:52,767 - hypercorn.error - INFO - Running on http://0.0.0.0:5001 (CTRL + C to quit)
+2025-02-24 10:06:55,946 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51159): <socket.socket fd=8, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51159)>
+2025-02-24 10:06:55,948 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51161): <socket.socket fd=9, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51161)>
+2025-02-24 10:06:56,432 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51170): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51170)>
+2025-02-24 10:07:02,809 - llmkey - INFO - LLM client initialized successfully
+2025-02-24 10:07:02,815 - __main__ - INFO - Starting outline generation
+2025-02-24 10:07:02,816 - __main__ - INFO - Loading input files
+2025-02-24 10:07:02,817 - bidding_workflow - INFO - Loaded tech file, size: 379 chars
+2025-02-24 10:07:02,818 - bidding_workflow - INFO - Loaded score file, size: 313 chars
+2025-02-24 10:07:02,818 - __main__ - INFO - Generating outline
+2025-02-24 10:07:02,819 - bidding_workflow - INFO - === Starting Outline Generation ===
+2025-02-24 10:07:02,832 - llmkey - INFO - Created new session with base URL: https://openrouter.ai/api/v1/
+2025-02-24 10:07:02,836 - llmkey - DEBUG - Sending request with params: {"model": "google/gemini-2.0-flash-lite-preview-02-05:free", "messages": [{"role": "system", "content": "你是投标文件编制专家。你的任务是根据技术要求和评分标准，生成一份测试版的投标文件大纲，只需要1个章节，每个章节包含一个节，每个节包含一个子节。\n你需要确保：\n1. 所有回复必须是标准的 JSON 格式\n2. 大纲结构完整，包含章、节、子节三级标题\n3. 一级标题与评分标准对应\n4. 涵盖所有技术要求\n5. 三级标题下有详细的内容边界描述\n\n输出格式必须严格遵循：\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 xxx\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 xxx\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 xxx\",\n                            \"content_summary\": \"xxx\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"}, {"role": "user", "content": "这是项目的技术要求，请仔细阅读并记住这些要求：\n\n【技术要求】\n本项目旨在采购并安装一套智能路灯系统，用于提升城市照明效率，实现节能环保。系统需具备远程控制、自动调光、故障报警等功能。\n\n二、技术要求23\n硬件要求 \n\n路灯灯具：LED光源，功率不低于100W，寿命≥50,000小时。\n\n控制器：支持4G/5G通信，具备远程控制功能。\n\n传感器：光照传感器、温度传感器、湿度传感器。\n\n电源：输入电压220V±10%，具备过压、过流保护。\n\n软件要求\n\n远程管理平台：支持Web端和移动端访问，实时监控路灯状态。\n\n自动调光：根据环境光照自动调节亮度，节能模式可节省至少30%电能。\n\n故障报警：系统自动检测故障并发送报警信息至管理平台。\n\n数据存储：至少保存90天的历史数据，支持数据导出。\n\n安装与维护\n\n安装：提供完整的安装方案，确保路灯安装稳固，布线整齐。\n\n维护：提供2年免费维护服务，响应时间不超过24小时。"}, {"role": "user", "content": "这是项目的评分标准，请仔细阅读并记住这些标准：\n\n【评分标准】\n技术方案（40分）\n\n方案完整性（10分）：方案是否涵盖所有技术要求。\n\n创新性（10分）：方案是否具备创新点，如智能算法优化等。\n\n可行性（10分）：方案是否切实可行，具备可操作性。\n\n节能效果（10分）：方案是否具备显著的节能效果。\n产品质量（30分）\n\n灯具质量（10分）：灯具是否符合技术参数，寿命是否达标。\n\n控制器性能（10分）：控制器是否稳定，通信是否可靠。\n\n传感器精度（10分）：传感器是否精准，数据是否可靠。\n售后服务（20分）\n\n维护响应时间（10分）：是否承诺24小时内响应。\n\n维护服务质量（10分）：是否提供定期巡检和故障排查。\n价格（10分）\n\n报价合理性（10分）：报价是否合理，性价比是否高。"}, {"role": "user", "content": "现在请基于之前提供的技术要求和评分标准，生成一份完整的投标文件大纲。要求：\n1. 确保大纲结构完整\n2. 确保一级标题与评分标准对应\n3. 确保涵盖所有技术要求\n4. 确保三级标题下有详细的内容边界描述\n5. 直接返回完整的 JSON，不要有任何其他文字\n6. 确保 JSON 格式正确，不要截断"}], "temperature": 0.7, "max_tokens": 8192, "top_p": 0.1}
+2025-02-24 10:07:02,842 - asyncio - DEBUG - Get address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+2025-02-24 10:07:02,859 - asyncio - DEBUG - Getting address info openrouter.ai:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 15.433ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.49.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.22.48.189', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('172.67.40.104', 443))]
+2025-02-24 10:07:03,066 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10a158530> starts SSL handshake
+2025-02-24 10:07:03,310 - asyncio - DEBUG - <asyncio.sslproto.SSLProtocol object at 0x10a158530>: SSL handshake took 243.3 ms
+2025-02-24 10:07:03,311 - asyncio - DEBUG - <asyncio.TransportSocket fd=12, family=2, type=1, proto=6, laddr=('192.168.31.119', 51207), raddr=('104.22.49.189', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10a4cf710>, <aiohttp.client_proto.ResponseHandler object at 0x10a4cd130>)
+2025-02-24 10:07:09,781 - llmkey - DEBUG - Raw API response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1740362823-5qCuqd5axCnZHfkIXpRu","provider":"Google","model":"google/gemini-2.0-flash-lite-preview-02-05","object":"chat.completion","created":1740362823,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"STOP","index":0,"message":{"role":"assistant","content":"```json\n{\n    \"body_paragraphs\": [\n        {\n            \"chapter_title\": \"第一章 技术方案与产品质量\",\n            \"sections\": [\n                {\n                    \"section_title\": \"1.1 技术方案\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.1.1 方案完整性 (10分)\",\n                            \"content_summary\": \"详细阐述智能路灯系统方案，包括LED灯具、控制器、传感器、电源等硬件组成，以及远程管理平台、自动调光、故障报警、数据存储等软件功能。确保方案全面覆盖技术要求，无遗漏。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.1.2 创新性 (10分)\",\n                            \"content_summary\": \"介绍方案的创新点，例如：采用的智能算法优化，实现更精细化的调光控制，提高节能效果；采用的通信技术，提升数据传输效率和稳定性；结合实际应用场景，提出定制化解决方案等。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.1.3 可行性 (10分)\",\n                            \"content_summary\": \"分析方案的可行性，包括技术实现的可行性、工程实施的可行性、以及后期维护的可行性。提供详细的实施计划，包括安装流程、调试方案、以及人员培训计划。说明如何确保方案能够顺利实施并达到预期效果。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.1.4 节能效果 (10分)\",\n                            \"content_summary\": \"详细说明智能路灯系统的节能效果。提供数据支持，例如：通过自动调光功能，在不同环境光照条件下，如何实现至少30%的电能节省；通过优化控制策略，进一步提升节能效果。提供节能效果的计算方法和依据。\"\n                        }\n                    ]\n                },\n                {\n                    \"section_title\": \"1.2 产品质量\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.2.1 灯具质量 (10分)\",\n                            \"content_summary\": \"详细描述LED灯具的质量，包括：灯具的品牌、型号、技术参数（功率不低于100W）、光效、显色指数等。提供灯具的寿命测试报告，证明其寿命≥50,000小时。提供灯具的质量认证证书。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.2.2 控制器性能 (10分)\",\n                            \"content_summary\": \"详细描述控制器的性能，包括：支持的通信方式（4G/5G）、远程控制功能、数据处理能力、稳定性、可靠性等。提供控制器的工作原理图和技术参数。说明控制器在恶劣环境下的工作能力。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.2.3 传感器精度 (10分)\",\n                            \"content_summary\": \"详细描述传感器的精度，包括：光照传感器、温度传感器、湿度传感器的品牌、型号、精度指标、响应时间等。提供传感器的校准报告和测试数据。说明传感器在不同环境下的数据采集能力。\"\n                        }\n                    ]\n                },\n                {\n                    \"section_title\": \"1.3 售后服务\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.3.1 维护响应时间 (10分)\",\n                            \"content_summary\": \"承诺24小时内响应故障报修。详细说明售后服务流程，包括：故障受理、问题诊断、现场维护等环节。提供售后服务团队的组织架构和联系方式。\"\n                        },\n                        {\n                            \"sub_section_title\": \"1.3.2 维护服务质量 (10分)\",\n                            \"content_summary\": \"提供2年免费维护服务，包括定期巡检和故障排查。详细说明维护服务的内容，包括：设备检查、软件升级、故障修复等。提供维护服务计划，包括巡检频率、维护周期等。\"\n                        }\n                    ]\n                },\n                {\n                    \"section_title\": \"1.4 价格\",\n                    \"sub_sections\": [\n                        {\n                            \"sub_section_title\": \"1.4.1 报价合理性 (10分)\",\n                            \"content_summary\": \"提供详细的报价清单，包括：灯具、控制器、传感器、安装费用、维护费用等。分析报价的合理性，说明价格与产品质量、技术方案、售后服务的匹配程度。与其他同类产品的价格进行对比分析，突出性价比优势。\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}\n```","refusal":null}}],"usage":{"prompt_tokens":812,"completion_tokens":1082,"total_tokens":1894}}
+2025-02-24 10:07:09,785 - bidding_workflow - INFO - Saved outline JSON to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.json
+2025-02-24 10:07:09,787 - bidding_workflow - INFO - Saved outline Markdown to /Users/good/Documents/vscode_projects/autobid-main/outputs/outline/outline.md
+2025-02-24 10:07:09,811 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 51253): <socket.socket fd=12, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 51253)>
+2025-02-24 10:08:48,056 - asyncio - WARNING - Executing <Task pending name='Task-2' coro=<observe_changes() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/utils.py:125> cb=[gather.<locals>._done_callback() at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:767] created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/app.py:873> took 1.397 seconds
+2025-02-24 13:09:27,010 - asyncio - WARNING - Executing <Task pending name='Task-2' coro=<observe_changes() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/utils.py:125> cb=[gather.<locals>._done_callback() at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:767] created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/app.py:873> took 0.278 seconds
+2025-02-24 13:21:35,254 - asyncio - WARNING - Executing <TimerHandle when=860626.581510029 _set_result_unless_cancelled(<Future finis...events.py:448>, None) at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/futures.py:313 created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:661> took 0.163 seconds
+2025-02-24 13:21:35,484 - asyncio - WARNING - Executing <Task pending name='Task-2' coro=<observe_changes() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/utils.py:125> cb=[gather.<locals>._done_callback() at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:767] created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/app.py:873> took 0.148 seconds
+2025-02-24 13:37:56,321 - asyncio - WARNING - Executing <Task pending name='Task-2' coro=<observe_changes() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/utils.py:125> cb=[gather.<locals>._done_callback() at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:767] created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/quart/app.py:873> took 0.234 seconds
+2025-02-24 13:46:25,914 - asyncio - WARNING - Executing <TimerHandle when=860725.870100834 _set_result_unless_cancelled(<Future finis...events.py:448>, None) at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/futures.py:313 created at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py:661> took 0.773 seconds
+2025-02-24 13:48:28,061 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 55122): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 55122)>
+2025-02-24 13:48:28,066 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 55123): <socket.socket fd=12, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 55123)>
+2025-02-24 13:48:33,444 - asyncio - DEBUG - <Server sockets=(<asyncio.TransportSocket fd=7, family=2, type=1, proto=0, laddr=('0.0.0.0', 5001)>,)> got a new connection from ('127.0.0.1', 55170): <socket.socket fd=10, family=2, type=1, proto=0, laddr=('127.0.0.1', 5001), raddr=('127.0.0.1', 55170)>
