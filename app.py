@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/')
 async def index():
-    return await render_template('index.html')
+    return await render_template('index.html', active_page='index')
 
 @app.route('/generate_outline', methods=['POST', 'GET'])
 async def generate_outline():
@@ -201,10 +201,10 @@ def get_config():
     return jsonify(Config.get_config())
 
 @app.route('/api/config', methods=['POST'])
-def update_config():
+async def update_config():
     """更新配置"""
     try:
-        new_config = request.json
+        new_config = await request.get_json()
         
         # 更新LLM配置
         if 'llm' in new_config:
@@ -252,7 +252,61 @@ def update_config():
 @app.route('/config')
 async def config_page():
     """配置页面"""
-    return await render_template('config.html')
+    return await render_template('config.html', active_page='config')
+
+@app.route('/prompts')
+async def prompts_page():
+    """提示词配置页面"""
+    return await render_template('prompts.html', active_page='prompts')
+
+@app.route('/api/prompts/variables', methods=['GET'])
+async def get_prompts():
+    """获取提示词配置"""
+    try:
+        config = Config.get_config()
+        prompts = config.get('prompts', {})
+        # 将配置中的 prompts 部分转换为前端需要的格式
+        variables = {
+            'OUTLINE_SYSTEM_ROLE': prompts.get('outline', {}).get('system_role', ''),
+            'OUTLINE_TECH_USER': prompts.get('outline', {}).get('tech_user', ''),
+            'OUTLINE_SCORE_USER': prompts.get('outline', {}).get('score_user', ''),
+            'OUTLINE_GENERATE_USER': prompts.get('outline', {}).get('generate_user', ''),
+            'CONTENT_SYSTEM_ROLE': prompts.get('content', {}).get('system_role', ''),
+            'CONTENT_INIT_USER': prompts.get('content', {}).get('init_user', ''),
+            'CONTENT_SECTION_USER': prompts.get('content', {}).get('section_user', '')
+        }
+        return jsonify(variables)
+    except Exception as e:
+        logger.error(f"Error getting prompts: {str(e)}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/prompts/variables', methods=['POST'])
+async def save_prompts():
+    """保存提示词配置"""
+    try:
+        data = await request.get_json()
+        
+        # 更新提示词配置
+        Config.PROMPTS_CONFIG = {
+            'outline': {
+                'system_role': data.get('OUTLINE_SYSTEM_ROLE', ''),
+                'tech_user': data.get('OUTLINE_TECH_USER', ''),
+                'score_user': data.get('OUTLINE_SCORE_USER', ''),
+                'generate_user': data.get('OUTLINE_GENERATE_USER', '')
+            },
+            'content': {
+                'system_role': data.get('CONTENT_SYSTEM_ROLE', ''),
+                'init_user': data.get('CONTENT_INIT_USER', ''),
+                'section_user': data.get('CONTENT_SECTION_USER', '')
+            }
+        }
+        
+        # 保存配置
+        Config.save_config()
+        return jsonify({"success": True})
+    except Exception as e:
+        logger.error(f"Error saving prompts: {str(e)}", exc_info=True)
+        return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
     # 检查webui目录是否存在

@@ -35,6 +35,21 @@ class Config:
     USE_PROXY = None
     PROXY_URLS = None
 
+    # 提示词配置
+    PROMPTS_CONFIG = {
+        'outline': {
+            'system_role': '',
+            'tech_user': '',
+            'score_user': '',
+            'generate_user': ''
+        },
+        'content': {
+            'system_role': '',
+            'init_user': '',
+            'section_user': ''
+        }
+    }
+
     @classmethod
     def _ensure_directories(cls):
         """确保必要的目录存在"""
@@ -113,6 +128,10 @@ class Config:
         cls.USE_PROXY = proxy_config.get('enabled')
         cls.PROXY_URLS = proxy_config.get('urls')
 
+        # 加载提示词配置
+        prompts_config = config.get('prompts', {})
+        cls.PROMPTS_CONFIG = prompts_config
+
     @classmethod
     def save_config(cls):
         """保存配置到JSON文件"""
@@ -137,7 +156,8 @@ class Config:
             'proxy': {
                 'enabled': cls.USE_PROXY,
                 'urls': cls.PROXY_URLS
-            }
+            },
+            'prompts': cls.PROMPTS_CONFIG
         }
         
         with open(cls.CONFIG_FILE, 'w', encoding='utf-8') as f:
@@ -167,7 +187,8 @@ class Config:
             'proxy': {
                 'enabled': cls.USE_PROXY,
                 'urls': cls.PROXY_URLS
-            }
+            },
+            'prompts': cls.PROMPTS_CONFIG
         }
 
 # 初始化配置

@@ -1,227 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>配置管理</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
-    <style>
-        .config-section {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
-        }
-        .config-title {
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #dee2e6;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">配置管理</h1>
-        
-        <!-- LLM配置 -->
-        <div class="config-section">
-            <h3 class="config-title">LLM配置</h3>
-            <div class="mb-3">
-                <label for="llm_api_key" class="form-label">API密钥</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="llm_api_key" name="llm.api_key">
-                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('llm_api_key')">
-                        <i class="bi bi-eye"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="llm_api_base" class="form-label">API基础URL</label>
-                <input type="text" class="form-control" id="llm_api_base" name="llm.api_base">
-            </div>
-            <div class="mb-3">
-                <label for="llm_model" class="form-label">模型</label>
-                <input type="text" class="form-control" id="llm_model" name="llm.model">
-            </div>
-            <div class="mb-3">
-                <label for="llm_max_tokens" class="form-label">最大Token数</label>
-                <input type="number" class="form-control" id="llm_max_tokens" name="llm.max_tokens">
-            </div>
-            <div class="mb-3">
-                <label for="llm_temperature" class="form-label">温度</label>
-                <input type="number" class="form-control" id="llm_temperature" name="llm.temperature" step="0.1" min="0" max="1">
-            </div>
-            <div class="mb-3">
-                <label for="llm_top_p" class="form-label">Top P</label>
-                <input type="number" class="form-control" id="llm_top_p" name="llm.top_p" step="0.1" min="0" max="1">
-            </div>
-            <div class="mb-3">
-                <label for="llm_timeout" class="form-label">超时时间（秒）</label>
-                <input type="number" class="form-control" id="llm_timeout" name="llm.timeout">
+{% extends "base.html" %}
+
+{% block title %}需求文档生成器 - 系统配置{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+<style>
+    .config-section {
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+    .config-title {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">系统配置</h2>
+    
+    <!-- LLM配置 -->
+    <div class="config-section">
+        <h3 class="config-title">LLM配置</h3>
+        <div class="mb-3">
+            <label for="llm_api_key" class="form-label">API密钥</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="llm_api_key" name="llm.api_key">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('llm_api_key')">
+                    <i class="bi bi-eye"></i>
+                </button>
             </div>
         </div>
-
-        <!-- 重试配置 -->
-        <div class="config-section">
-            <h3 class="config-title">重试配置</h3>
-            <div class="mb-3">
-                <label for="retry_max_retries" class="form-label">最大重试次数</label>
-                <input type="number" class="form-control" id="retry_max_retries" name="retry.max_retries">
-            </div>
-            <div class="mb-3">
-                <label for="retry_delay" class="form-label">重试延迟（秒）</label>
-                <input type="number" class="form-control" id="retry_delay" name="retry.delay">
-            </div>
-            <div class="mb-3">
-                <label for="retry_backoff" class="form-label">退避系数</label>
-                <input type="number" class="form-control" id="retry_backoff" name="retry.backoff" step="0.1">
-            </div>
+        <div class="mb-3">
+            <label for="llm_api_base" class="form-label">API基础URL</label>
+            <input type="text" class="form-control" id="llm_api_base" name="llm.api_base">
         </div>
-
-        <!-- API配置 -->
-        <div class="config-section">
-            <h3 class="config-title">API配置</h3>
-            <div class="mb-3">
-                <label for="api_request_timeout" class="form-label">请求超时时间（秒）</label>
-                <input type="number" class="form-control" id="api_request_timeout" name="api.request_timeout">
-            </div>
+        <div class="mb-3">
+            <label for="llm_model" class="form-label">模型</label>
+            <input type="text" class="form-control" id="llm_model" name="llm.model">
         </div>
-
-        <!-- 代理配置 -->
-        <div class="config-section">
-            <h3 class="config-title">代理配置</h3>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="proxy_enabled" name="proxy.enabled">
-                <label class="form-check-label" for="proxy_enabled">启用代理</label>
-            </div>
-            <div id="proxy_urls_section">
-                <div class="mb-3">
-                    <label for="proxy_http" class="form-label">HTTP代理</label>
-                    <input type="text" class="form-control" id="proxy_http" name="proxy.urls.http">
-                </div>
-                <div class="mb-3">
-                    <label for="proxy_https" class="form-label">HTTPS代理</label>
-                    <input type="text" class="form-control" id="proxy_https" name="proxy.urls.https">
-                </div>
-            </div>
+        <div class="mb-3">
+            <label for="llm_max_tokens" class="form-label">最大Token数</label>
+            <input type="number" class="form-control" id="llm_max_tokens" name="llm.max_tokens">
         </div>
-
-        <!-- 操作按钮 -->
-        <div class="mb-4">
-            <button class="btn btn-primary" onclick="saveConfig()">保存配置</button>
-            <button class="btn btn-secondary ms-2" onclick="loadConfig()">重新加载</button>
+        <div class="mb-3">
+            <label for="llm_temperature" class="form-label">温度</label>
+            <input type="number" class="form-control" id="llm_temperature" name="llm.temperature" step="0.1" min="0" max="1">
+        </div>
+        <div class="mb-3">
+            <label for="llm_top_p" class="form-label">Top P</label>
+            <input type="number" class="form-control" id="llm_top_p" name="llm.top_p" step="0.1" min="0" max="1">
+        </div>
+        <div class="mb-3">
+            <label for="llm_timeout" class="form-label">超时时间（秒）</label>
+            <input type="number" class="form-control" id="llm_timeout" name="llm.timeout">
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
-    <script>
-        // 页面加载时获取配置
-        document.addEventListener('DOMContentLoaded', loadConfig);
+    <!-- 重试配置 -->
+    <div class="config-section">
+        <h3 class="config-title">重试配置</h3>
+        <div class="mb-3">
+            <label for="retry_max_retries" class="form-label">最大重试次数</label>
+            <input type="number" class="form-control" id="retry_max_retries" name="retry.max_retries">
+        </div>
+        <div class="mb-3">
+            <label for="retry_delay" class="form-label">重试延迟（秒）</label>
+            <input type="number" class="form-control" id="retry_delay" name="retry.delay">
+        </div>
+        <div class="mb-3">
+            <label for="retry_backoff" class="form-label">退避系数</label>
+            <input type="number" class="form-control" id="retry_backoff" name="retry.backoff" step="0.1">
+        </div>
+    </div>
 
-        function loadConfig() {
-            fetch('/api/config')
-                .then(response => response.json())
-                .then(config => {
-                    // 填充表单
-                    fillForm(config);
-                    toastr.success('配置已加载');
-                })
-                .catch(error => {
-                    console.error('加载配置失败:', error);
-                    toastr.error('加载配置失败');
-                });
-        }
+    <!-- API配置 -->
+    <div class="config-section">
+        <h3 class="config-title">API配置</h3>
+        <div class="mb-3">
+            <label for="api_request_timeout" class="form-label">请求超时时间（秒）</label>
+            <input type="number" class="form-control" id="api_request_timeout" name="api.request_timeout">
+        </div>
+    </div>
 
-        function saveConfig() {
-            // 收集表单数据
-            const config = {
-                llm: {
-                    api_key: document.getElementById('llm_api_key').value,
-                    api_base: document.getElementById('llm_api_base').value,
-                    model: document.getElementById('llm_model').value,
-                    max_tokens: parseInt(document.getElementById('llm_max_tokens').value),
-                    temperature: parseFloat(document.getElementById('llm_temperature').value),
-                    top_p: parseFloat(document.getElementById('llm_top_p').value),
-                    timeout: parseInt(document.getElementById('llm_timeout').value)
-                },
-                retry: {
-                    max_retries: parseInt(document.getElementById('retry_max_retries').value),
-                    delay: parseInt(document.getElementById('retry_delay').value),
-                    backoff: parseFloat(document.getElementById('retry_backoff').value)
-                },
-                api: {
-                    request_timeout: parseInt(document.getElementById('api_request_timeout').value)
-                },
-                proxy: {
-                    enabled: document.getElementById('proxy_enabled').checked,
-                    urls: {
-                        http: document.getElementById('proxy_http').value,
-                        https: document.getElementById('proxy_https').value
-                    }
-                }
-            };
+    <!-- 代理配置 -->
+    <div class="config-section">
+        <h3 class="config-title">代理配置</h3>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="proxy_enabled" name="proxy.enabled">
+            <label class="form-check-label" for="proxy_enabled">启用代理</label>
+        </div>
+        <div id="proxy_urls_section">
+            <div class="mb-3">
+                <label for="proxy_http" class="form-label">HTTP代理</label>
+                <input type="text" class="form-control" id="proxy_http" name="proxy.urls.http">
+            </div>
+            <div class="mb-3">
+                <label for="proxy_https" class="form-label">HTTPS代理</label>
+                <input type="text" class="form-control" id="proxy_https" name="proxy.urls.https">
+            </div>
+        </div>
+    </div>
 
-            // 发送到服务器
-            fetch('/api/config', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(config)
-            })
+    <div class="mt-4">
+        <button class="btn btn-primary" onclick="saveConfig()">保存配置</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+<script>
+    // 页面加载时获取配置
+    document.addEventListener('DOMContentLoaded', loadConfig);
+
+    async function loadConfig() {
+        fetch('/api/config')
             .then(response => response.json())
-            .then(result => {
-                if (result.status === 'success') {
-                    toastr.success('配置已保存');
-                    fillForm(result.config);
-                } else {
-                    toastr.error('保存失败: ' + result.message);
-                }
+            .then(config => {
+                // 填充表单
+                fillForm(config);
+                toastr.success('配置已加载');
             })
             .catch(error => {
-                console.error('保存配置失败:', error);
-                toastr.error('保存配置失败');
+                console.error('加载配置失败:', error);
+                toastr.error('加载配置失败');
             });
-        }
+    }
 
-        function fillForm(config) {
-            // LLM配置
-            document.getElementById('llm_api_key').value = config.llm.api_key || '';
-            document.getElementById('llm_api_base').value = config.llm.api_base || '';
-            document.getElementById('llm_model').value = config.llm.model || '';
-            document.getElementById('llm_max_tokens').value = config.llm.max_tokens || '';
-            document.getElementById('llm_temperature').value = config.llm.temperature || '';
-            document.getElementById('llm_top_p').value = config.llm.top_p || '';
-            document.getElementById('llm_timeout').value = config.llm.timeout || '';
-
-            // 重试配置
-            document.getElementById('retry_max_retries').value = config.retry.max_retries || '';
-            document.getElementById('retry_delay').value = config.retry.delay || '';
-            document.getElementById('retry_backoff').value = config.retry.backoff || '';
-
-            // API配置
-            document.getElementById('api_request_timeout').value = config.api.request_timeout || '';
-
-            // 代理配置
-            document.getElementById('proxy_enabled').checked = config.proxy.enabled || false;
-            document.getElementById('proxy_http').value = config.proxy.urls?.http || '';
-            document.getElementById('proxy_https').value = config.proxy.urls?.https || '';
-        }
-
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            input.type = input.type === 'password' ? 'text' : 'password';
-        }
-
-        // 配置toastr
-        toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-top-right",
+    async function saveConfig() {
+        // 收集表单数据
+        const config = {
+            llm: {
+                api_key: document.getElementById('llm_api_key').value,
+                api_base: document.getElementById('llm_api_base').value,
+                model: document.getElementById('llm_model').value,
+                max_tokens: parseInt(document.getElementById('llm_max_tokens').value),
+                temperature: parseFloat(document.getElementById('llm_temperature').value),
+                top_p: parseFloat(document.getElementById('llm_top_p').value),
+                timeout: parseInt(document.getElementById('llm_timeout').value)
+            },
+            retry: {
+                max_retries: parseInt(document.getElementById('retry_max_retries').value),
+                delay: parseInt(document.getElementById('retry_delay').value),
+                backoff: parseFloat(document.getElementById('retry_backoff').value)
+            },
+            api: {
+                request_timeout: parseInt(document.getElementById('api_request_timeout').value)
+            },
+            proxy: {
+                enabled: document.getElementById('proxy_enabled').checked,
+                urls: {
+                    http: document.getElementById('proxy_http').value,
+                    https: document.getElementById('proxy_https').value
+                }
+            }
         };
-    </script>
-</body>
-</html>
+
+        // 发送到服务器
+        fetch('/api/config', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(config)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === 'success') {
+                toastr.success('配置已保存');
+                fillForm(result.config);
+            } else {
+                toastr.error('保存失败: ' + result.message);
+            }
+        })
+        .catch(error => {
+            console.error('保存配置失败:', error);
+            toastr.error('保存配置失败');
+        });
+    }
+
+    function fillForm(config) {
+        // LLM配置
+        document.getElementById('llm_api_key').value = config.llm.api_key || '';
+        document.getElementById('llm_api_base').value = config.llm.api_base || '';
+        document.getElementById('llm_model').value = config.llm.model || '';
+        document.getElementById('llm_max_tokens').value = config.llm.max_tokens || '';
+        document.getElementById('llm_temperature').value = config.llm.temperature || '';
+        document.getElementById('llm_top_p').value = config.llm.top_p || '';
+        document.getElementById('llm_timeout').value = config.llm.timeout || '';
+
+        // 重试配置
+        document.getElementById('retry_max_retries').value = config.retry.max_retries || '';
+        document.getElementById('retry_delay').value = config.retry.delay || '';
+        document.getElementById('retry_backoff').value = config.retry.backoff || '';
+
+        // API配置
+        document.getElementById('api_request_timeout').value = config.api.request_timeout || '';
+
+        // 代理配置
+        document.getElementById('proxy_enabled').checked = config.proxy.enabled || false;
+        document.getElementById('proxy_http').value = config.proxy.urls?.http || '';
+        document.getElementById('proxy_https').value = config.proxy.urls?.https || '';
+    }
+
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    // 配置toastr
+    toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-right",
+    };
+</script>
+{% endblock %}

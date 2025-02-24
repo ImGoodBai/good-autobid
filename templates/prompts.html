@@ -1,135 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>提示词管理</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
-    <style>
-        .prompt-section {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border: 1px solid #dee2e6;
-            border-radius: 0.25rem;
-        }
-        .prompt-title {
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #dee2e6;
-        }
-        .prompt-textarea {
-            min-height: 200px;
-            font-family: monospace;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">提示词管理</h1>
-        
-        <!-- 大纲生成相关提示词 -->
-        <div class="prompt-section">
-            <h3 class="prompt-title">大纲生成相关提示词</h3>
-            <div class="mb-3">
-                <label for="OUTLINE_SYSTEM_ROLE" class="form-label">系统角色提示词</label>
-                <textarea class="form-control prompt-textarea" id="OUTLINE_SYSTEM_ROLE" name="OUTLINE_SYSTEM_ROLE"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="OUTLINE_TECH_USER" class="form-label">技术要求提示词</label>
-                <textarea class="form-control prompt-textarea" id="OUTLINE_TECH_USER" name="OUTLINE_TECH_USER"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="OUTLINE_SCORE_USER" class="form-label">评分标准提示词</label>
-                <textarea class="form-control prompt-textarea" id="OUTLINE_SCORE_USER" name="OUTLINE_SCORE_USER"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="OUTLINE_GENERATE_USER" class="form-label">生成大纲提示词</label>
-                <textarea class="form-control prompt-textarea" id="OUTLINE_GENERATE_USER" name="OUTLINE_GENERATE_USER"></textarea>
-            </div>
-        </div>
+{% extends "base.html" %}
 
-        <!-- 内容生成相关提示词 -->
-        <div class="prompt-section">
-            <h3 class="prompt-title">内容生成相关提示词</h3>
-            <div class="mb-3">
-                <label for="CONTENT_SYSTEM_ROLE" class="form-label">系统角色提示词</label>
-                <textarea class="form-control prompt-textarea" id="CONTENT_SYSTEM_ROLE" name="CONTENT_SYSTEM_ROLE"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="CONTENT_INIT_USER" class="form-label">初始化提示词</label>
-                <textarea class="form-control prompt-textarea" id="CONTENT_INIT_USER" name="CONTENT_INIT_USER"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="CONTENT_SECTION_USER" class="form-label">章节内容提示词</label>
-                <textarea class="form-control prompt-textarea" id="CONTENT_SECTION_USER" name="CONTENT_SECTION_USER"></textarea>
-            </div>
-        </div>
+{% block title %}需求文档生成器 - 提示词配置{% endblock %}
 
-        <div class="mb-4">
-            <button class="btn btn-primary" onclick="savePrompts()">保存更改</button>
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+<style>
+    .prompt-section {
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+    .prompt-title {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .prompt-textarea {
+        min-height: 200px;
+        font-family: monospace;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">提示词配置</h2>
+    
+    <!-- 大纲生成相关提示词 -->
+    <div class="prompt-section">
+        <h3 class="prompt-title">大纲生成相关提示词</h3>
+        <div class="mb-3">
+            <label for="OUTLINE_SYSTEM_ROLE" class="form-label">系统角色提示词</label>
+            <textarea class="form-control prompt-textarea" id="OUTLINE_SYSTEM_ROLE" name="OUTLINE_SYSTEM_ROLE" rows="20"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="OUTLINE_TECH_USER" class="form-label">技术要求提示词</label>
+            <textarea class="form-control prompt-textarea" id="OUTLINE_TECH_USER" name="OUTLINE_TECH_USER" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="OUTLINE_SCORE_USER" class="form-label">评分标准提示词</label>
+            <textarea class="form-control prompt-textarea" id="OUTLINE_SCORE_USER" name="OUTLINE_SCORE_USER" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="OUTLINE_GENERATE_USER" class="form-label">生成大纲提示词</label>
+            <textarea class="form-control prompt-textarea" id="OUTLINE_GENERATE_USER" name="OUTLINE_GENERATE_USER" rows="5"></textarea>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <!-- 内容生成相关提示词 -->
+    <div class="prompt-section">
+        <h3 class="prompt-title">内容生成相关提示词</h3>
+        <div class="mb-3">
+            <label for="CONTENT_SYSTEM_ROLE" class="form-label">系统角色提示词</label>
+            <textarea class="form-control prompt-textarea" id="CONTENT_SYSTEM_ROLE" name="CONTENT_SYSTEM_ROLE" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="CONTENT_INIT_USER" class="form-label">初始化提示词</label>
+            <textarea class="form-control prompt-textarea" id="CONTENT_INIT_USER" name="CONTENT_INIT_USER" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="CONTENT_SECTION_USER" class="form-label">章节内容提示词</label>
+            <textarea class="form-control prompt-textarea" id="CONTENT_SECTION_USER" name="CONTENT_SECTION_USER" rows="5"></textarea>
+        </div>
+    </div>
 
-    <script>
-        // 页面加载时获取提示词
-        document.addEventListener('DOMContentLoaded', loadPrompts);
+    <div class="mt-4">
+        <button class="btn btn-primary" onclick="savePrompts()">保存配置</button>
+    </div>
+</div>
+{% endblock %}
 
-        function loadPrompts() {
-            fetch('/api/prompts/variables')
-                .then(response => response.json())
-                .then(data => {
-                    Object.entries(data).forEach(([key, value]) => {
-                        const element = document.getElementById(key);
-                        if (element) {
-                            element.value = value;
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    toastr.error('加载提示词失败');
-                });
-        }
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+<script>
+    // 页面加载时获取提示词配置
+    document.addEventListener('DOMContentLoaded', loadPrompts);
 
-        function savePrompts() {
-            const prompts = {};
-            document.querySelectorAll('textarea').forEach(textarea => {
-                prompts[textarea.id] = textarea.value;
-            });
-
-            fetch('/api/prompts/variables', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(prompts)
-            })
+    async function loadPrompts() {
+        fetch('/api/prompts/variables')
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
-                    toastr.success('保存成功');
-                } else {
-                    toastr.error('保存失败');
-                }
+                Object.entries(data).forEach(([key, value]) => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = value;
+                    }
+                });
             })
             .catch(error => {
                 console.error('Error:', error);
-                toastr.error('保存失败');
+                toastr.error('加载提示词失败');
             });
-        }
+    }
 
-        // 配置toastr
-        toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-top-right",
-            timeOut: 3000
-        };
-    </script>
-</body>
-</html>
+    async function savePrompts() {
+        const prompts = {};
+        document.querySelectorAll('textarea').forEach(textarea => {
+            prompts[textarea.id] = textarea.value;
+        });
+
+        fetch('/api/prompts/variables', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(prompts)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                toastr.success('保存成功');
+            } else {
+                toastr.error('保存失败');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            toastr.error('保存失败');
+        });
+    }
+
+    // 配置toastr
+    toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-top-right",
+        timeOut: 3000
+    };
+</script>
+{% endblock %}

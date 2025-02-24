@@ -1,209 +1,205 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>需求文档生成器</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .sidebar {
-            height: 100vh;
-            background-color: #f8f9fa;
-            border-right: 1px solid #dee2e6;
-        }
-        .content {
-            height: 100vh;
-            overflow-y: auto;
-        }
-        .editor-container {
-            height: calc(100vh - 120px);
-            margin-top: 10px;
-        }
-        .editor {
-            height: 100%;
-            resize: none;
-        }
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- 侧边栏 -->
-            <div class="col-md-2 sidebar py-3">
-                <h5 class="mb-3">需求文档生成器</h5>
-                <div class="nav flex-column nav-pills">
-                    <button class="nav-link active mb-2" id="input-tab" data-bs-toggle="pill" data-bs-target="#input">需求输入与生成</button>
-                    <button class="nav-link mb-2" id="outline-tab" data-bs-toggle="pill" data-bs-target="#outline">大纲查看</button>
-                    <button class="nav-link mb-2" id="document-tab" data-bs-toggle="pill" data-bs-target="#document">文档查看</button>
+{% extends "base.html" %}
+
+{% block title %}需求文档生成器 - 首页{% endblock %}
+
+{% block extra_css %}
+<style>
+    .sidebar {
+        height: calc(100vh - 72px);
+        background-color: #f8f9fa;
+        border-right: 1px solid #dee2e6;
+    }
+    .content {
+        height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+    .editor-container {
+        height: calc(100vh - 120px);
+        margin-top: 10px;
+    }
+    .editor {
+        height: 100%;
+        resize: none;
+    }
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- 侧边栏 -->
+    <div class="col-md-2 sidebar py-3">
+        <h5 class="mb-3">功能导航</h5>
+        <div class="nav flex-column nav-pills">
+            <button class="nav-link active mb-2" id="input-tab" data-bs-toggle="pill" data-bs-target="#input">需求输入与生成</button>
+            <button class="nav-link mb-2" id="outline-tab" data-bs-toggle="pill" data-bs-target="#outline">大纲查看</button>
+            <button class="nav-link mb-2" id="document-tab" data-bs-toggle="pill" data-bs-target="#document">文档查看</button>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="col-md-10 content py-3">
+        <div class="btn-group mb-3">
+            <button class="btn btn-primary" id="save-btn">保存</button>
+            <button class="btn btn-success" id="generate-outline-btn">生成大纲</button>
+            <button class="btn btn-info" id="generate-doc-btn">生成文档</button>
+        </div>
+        <div id="status" class="alert alert-info d-none"></div>
+        
+        <div class="tab-content">
+            <!-- 需求输入与生成页面 -->
+            <div class="tab-pane fade show active" id="input">
+                <div class="row editor-container">
+                    <div class="col-md-6">
+                        <label for="tech-editor" class="form-label">技术需求 (tech.md)</label>
+                        <textarea class="form-control editor" id="tech-editor"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="score-editor" class="form-label">评分标准 (score.md)</label>
+                        <textarea class="form-control editor" id="score-editor"></textarea>
+                    </div>
                 </div>
             </div>
 
-            <!-- 主要内容区 -->
-            <div class="col-md-10 content py-3">
-                <div class="btn-group mb-3">
-                    <button class="btn btn-primary" id="save-btn">保存</button>
-                    <button class="btn btn-success" id="generate-outline-btn">生成大纲</button>
-                    <button class="btn btn-info" id="generate-doc-btn">生成文档</button>
+            <!-- 大纲查看页面 -->
+            <div class="tab-pane fade" id="outline">
+                <div class="mb-3">
+                    <pre id="outline-content" class="border"></pre>
                 </div>
-                <div id="status" class="alert alert-info d-none"></div>
-                
-                <div class="tab-content">
-                    <!-- 需求输入与生成页面 -->
-                    <div class="tab-pane fade show active" id="input">
-                        <div class="row editor-container">
-                            <div class="col-md-6">
-                                <label for="tech-editor" class="form-label">技术需求 (tech.md)</label>
-                                <textarea class="form-control editor" id="tech-editor"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="score-editor" class="form-label">评分标准 (score.md)</label>
-                                <textarea class="form-control editor" id="score-editor"></textarea>
-                            </div>
-                        </div>
-                    </div>
+            </div>
 
-                    <!-- 大纲查看页面 -->
-                    <div class="tab-pane fade" id="outline">
-                        <div class="mb-3">
-                            <pre id="outline-content" class="border"></pre>
-                        </div>
-                    </div>
-
-                    <!-- 文档查看页面 -->
-                    <div class="tab-pane fade" id="document">
-                        <div class="mb-3">
-                            <div id="document-content" class="border p-3 bg-light"></div>
-                        </div>
-                    </div>
+            <!-- 文档查看页面 -->
+            <div class="tab-pane fade" id="document">
+                <div class="mb-3">
+                    <div id="document-content" class="border p-3 bg-light"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+{% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-        // 工具函数：显示状态信息
-        function showStatus(message, type = 'info') {
-            const status = document.getElementById('status');
-            status.className = `alert alert-${type}`;
-            status.textContent = message;
-            status.classList.remove('d-none');
-            setTimeout(() => status.classList.add('d-none'), 3000);
+{% block extra_js %}
+<script>
+    // 工具函数：显示状态信息
+    function showStatus(message, type = 'info') {
+        const status = document.getElementById('status');
+        status.className = `alert alert-${type}`;
+        status.textContent = message;
+        status.classList.remove('d-none');
+        setTimeout(() => status.classList.add('d-none'), 3000);
+    }
+
+    // API 调用函数
+    async function callApi(endpoint, method = 'GET', data = null) {
+        try {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+            const response = await fetch(`http://localhost:5001${endpoint}`, options);
+            const result = await response.json();
+            if (result.code === 1) {
+                throw new Error(result.message);
+            }
+            return result;
+        } catch (error) {
+            showStatus(error.message, 'danger');
+            throw error;
         }
+    }
 
-        // API 调用函数
-        async function callApi(endpoint, method = 'GET', data = null) {
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        // 加载已保存的输入
+        async function loadInput() {
             try {
-                const options = {
-                    method,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                };
-                if (data) {
-                    options.body = JSON.stringify(data);
-                }
-                const response = await fetch(`http://localhost:5001${endpoint}`, options);
-                const result = await response.json();
-                if (result.code === 1) {
-                    throw new Error(result.message);
-                }
-                return result;
+                const result = await callApi('/show_input');
+                document.getElementById('tech-editor').value = result.data.tech_md;
+                document.getElementById('score-editor').value = result.data.score_md;
             } catch (error) {
-                showStatus(error.message, 'danger');
-                throw error;
+                console.error('加载输入失败:', error);
+            }
+        }
+        loadInput();
+
+        // 保存按钮
+        document.getElementById('save-btn').addEventListener('click', async () => {
+            try {
+                const techContent = document.getElementById('tech-editor').value;
+                const scoreContent = document.getElementById('score-editor').value;
+                await callApi('/save_input', 'POST', {
+                    tech_md: techContent,
+                    score_md: scoreContent
+                });
+                showStatus('保存成功', 'success');
+            } catch (error) {
+                console.error('保存失败:', error);
+            }
+        });
+
+        // 生成大纲按钮
+        document.getElementById('generate-outline-btn').addEventListener('click', async () => {
+            try {
+                showStatus('正在生成大纲...', 'info');
+                await callApi('/generate_outline', 'POST');
+                showStatus('大纲生成成功', 'success');
+                document.getElementById('outline-tab').click();
+                await refreshOutline();
+            } catch (error) {
+                console.error('生成大纲失败:', error);
+            }
+        });
+
+        // 生成文档按钮
+        document.getElementById('generate-doc-btn').addEventListener('click', async () => {
+            try {
+                showStatus('正在生成文档...', 'info');
+                await callApi('/generate_document', 'POST');
+                showStatus('文档生成成功', 'success');
+                document.getElementById('document-tab').click();
+                await refreshDocument();
+            } catch (error) {
+                console.error('生成文档失败:', error);
+            }
+        });
+
+        // 刷新大纲
+        async function refreshOutline() {
+            try {
+                const result = await callApi('/show_outline');
+                const outlineContent = document.getElementById('outline-content');
+                outlineContent.textContent = JSON.stringify(result.data, null, 2);
+            } catch (error) {
+                console.error('刷新大纲失败:', error);
             }
         }
 
-        // 页面加载完成后执行
-        document.addEventListener('DOMContentLoaded', function() {
-            // 加载已保存的输入
-            async function loadInput() {
-                try {
-                    const result = await callApi('/show_input');
-                    document.getElementById('tech-editor').value = result.data.tech_md;
-                    document.getElementById('score-editor').value = result.data.score_md;
-                } catch (error) {
-                    console.error('加载输入失败:', error);
-                }
+        // 刷新文档
+        async function refreshDocument() {
+            try {
+                const result = await callApi('/show_document');
+                const documentContent = document.getElementById('document-content');
+                documentContent.innerHTML = marked.parse(result.data);
+            } catch (error) {
+                console.error('刷新文档失败:', error);
             }
-            loadInput();
+        }
 
-            // 保存按钮
-            document.getElementById('save-btn').addEventListener('click', async () => {
-                try {
-                    const techContent = document.getElementById('tech-editor').value;
-                    const scoreContent = document.getElementById('score-editor').value;
-                    await callApi('/save_input', 'POST', {
-                        tech_md: techContent,
-                        score_md: scoreContent
-                    });
-                    showStatus('保存成功', 'success');
-                } catch (error) {
-                    console.error('保存失败:', error);
-                }
-            });
-
-            // 生成大纲按钮
-            document.getElementById('generate-outline-btn').addEventListener('click', async () => {
-                try {
-                    showStatus('正在生成大纲...', 'info');
-                    await callApi('/generate_outline', 'POST');
-                    showStatus('大纲生成成功', 'success');
-                    document.getElementById('outline-tab').click();
-                    await refreshOutline();
-                } catch (error) {
-                    console.error('生成大纲失败:', error);
-                }
-            });
-
-            // 生成文档按钮
-            document.getElementById('generate-doc-btn').addEventListener('click', async () => {
-                try {
-                    showStatus('正在生成文档...', 'info');
-                    await callApi('/generate_document', 'POST');
-                    showStatus('文档生成成功', 'success');
-                    document.getElementById('document-tab').click();
-                    await refreshDocument();
-                } catch (error) {
-                    console.error('生成文档失败:', error);
-                }
-            });
-
-            // 刷新大纲
-            async function refreshOutline() {
-                try {
-                    const result = await callApi('/show_outline');
-                    const outlineContent = document.getElementById('outline-content');
-                    outlineContent.textContent = JSON.stringify(result.data, null, 2);
-                } catch (error) {
-                    console.error('刷新大纲失败:', error);
-                }
-            }
-
-            // 刷新文档
-            async function refreshDocument() {
-                try {
-                    const result = await callApi('/show_document');
-                    const documentContent = document.getElementById('document-content');
-                    documentContent.innerHTML = marked.parse(result.data);
-                } catch (error) {
-                    console.error('刷新文档失败:', error);
-                }
-            }
-
-            // 添加标签页切换事件监听
-            document.getElementById('outline-tab').addEventListener('click', refreshOutline);
-            document.getElementById('document-tab').addEventListener('click', refreshDocument);
-        });
-    </script>
-</body>
-</html>
+        // 添加标签页切换事件监听
+        document.getElementById('outline-tab').addEventListener('click', refreshOutline);
+        document.getElementById('document-tab').addEventListener('click', refreshDocument);
+    });
+</script>
+{% endblock %}
