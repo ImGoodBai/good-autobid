@@ -6,6 +6,8 @@ from config import Config
 import json
 from datetime import datetime
 import os
+import webbrowser
+import asyncio
 
 app = Quart(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 设置最大请求大小为16MB
@@ -355,4 +357,10 @@ if __name__ == '__main__':
     # 检查webui目录是否存在
     if not os.path.exists('templates'):
         logger.warning("Templates directory not found.")
-    app.run(host='0.0.0.0', debug=True, port=5001)
+    
+    # 在服务器启动前打开浏览器
+    @app.before_serving
+    async def open_browser():
+        webbrowser.open('http://127.0.0.1:5005')
+    
+    app.run(debug=False, use_reloader=False,port=5005)
