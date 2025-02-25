@@ -1,6 +1,6 @@
 # bidding_workflow.py
 
-from flask import Flask, jsonify, request
+#from flask import Flask, jsonify, request
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Union
 import json
@@ -15,7 +15,7 @@ from prompts import Prompts
 import time
 import asyncio
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 # 将现有的路径常量替换为配置
 BASE_DIR = Config.BASE_DIR
@@ -694,82 +694,5 @@ def dict_to_outline(data: dict) -> OutlineNode:
         node.children = [dict_to_outline(child) for child in data['children']]
     return node
 
-@app.route('/generate_outline', methods=['POST'])
-def generate_outline():
-    workflow = BiddingWorkflow()
-    try:
-        logger.info("Starting outline generation")
-        
-        # 加载输入文件
-        logger.info("Loading input files")
-        workflow.load_input_files()
-        
-        # 生成大纲
-        logger.info("Generating outline")
-        outline_json = workflow.generate_outline()
-        if not outline_json:
-            logger.error("Failed to generate outline")
-            return jsonify({"status": "error", "message": "Failed to generate outline"}), 500
-            
-        logger.info("Successfully generated outline")
-        logger.debug(f"Raw outline JSON:\n{outline_json}")
-        
-        # 解析大纲
-        logger.info("Parsing outline JSON")
-        workflow.outline = workflow.parse_outline_json(outline_json)
-        
-        # 保存大纲
-        logger.info("Saving outline")
-        workflow.save_outline()
-        
-        logger.info("Outline generation completed successfully")
-        return jsonify({
-            "status": "success",
-            "outline": workflow.outline.to_dict()
-        })
-    except Exception as e:
-        logger.error(f"Error in generate_outline: {str(e)}", exc_info=True)
-        return jsonify({"status": "error", "message": str(e)}), 500
-
-@app.route('/generate_content', methods=['POST'])
-async def generate_content():
-    workflow = BiddingWorkflow()
-    try:
-        success = await workflow.generate_full_content_async()
-        if success:
-            return jsonify({"status": "success"})
-        else:
-            return jsonify({"status": "error", "message": "Content generation failed"}), 500
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
-    finally:
-        await workflow.llm_client.close()
-
-@app.route('/generate_document', methods=['POST'])
-def generate_document():
-    workflow = BiddingWorkflow()
-    try:
-        # 加载输入文件
-        workflow.load_input_files()
-        
-        # 加载大纲
-        with open(Config.OUTLINE_DIR / 'outline.json', 'r', encoding='utf-8') as f:
-            outline_dict = json.load(f)  # 这里已经得到了 dict
-            workflow.outline = workflow.parse_outline_json(outline_dict)  # 直接传入 dict
-        
-        # 生成完整内容
-        content = workflow.generate_full_content_async()
-        if not content:
-            return jsonify({"status": "error", "message": "Failed to generate content"}), 500
-        
-        return jsonify({
-            "status": "success",
-            "message": "Document generated successfully"
-        })
-        
-    except Exception as e:
-        logger.error(f"Error generating document: {e}", exc_info=True)
-        return jsonify({"status": "error", "message": str(e)}), 500
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    pass
