@@ -1,14 +1,166 @@
 {
   "body_paragraphs": [
     {
-      "chapter_title": "第五章 附件",
+      "chapter_title": "第一章 技术方案（40分）",
       "sections": [
         {
-          "section_title": "5.1 附件清单",
+          "section_title": "1.1 方案完整性（10分）",
           "sub_sections": [
             {
-              "content_summary": "列出所有附件的清单，包括产品彩页、技术参数、质检报告、认证证书、用户案例、公司资质等。",
-              "sub_section_title": "5.1.1 附件列表"
+              "sub_section_title": "1.1.1 系统概述",
+              "content_summary": "详细描述智能路灯系统的整体架构，包括硬件组成、软件功能、通信方式等，确保方案涵盖所有技术要求，包括远程控制、自动调光、故障报警等。"
+            },
+            {
+              "sub_section_title": "1.1.2 技术指标对应",
+              "content_summary": "逐一列出技术要求，并说明本方案如何满足这些要求。例如，LED光源功率、寿命，控制器通信方式、远程控制功能，传感器类型、数据采集，电源保护措施等。"
+            }
+          ]
+        },
+        {
+          "section_title": "1.2 创新性（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "1.2.1 智能算法优化",
+              "content_summary": "描述方案中采用的智能算法，例如基于环境光照和交通流量的动态调光算法，以及如何优化节能效果。说明算法的创新点和优势。"
+            },
+            {
+              "sub_section_title": "1.2.2 创新技术应用",
+              "content_summary": "如果使用了其他创新技术，例如物联网技术、边缘计算等，详细描述其应用方式和带来的优势。"
+            }
+          ]
+        },
+        {
+          "section_title": "1.3 可行性（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "1.3.1 硬件选型可行性",
+              "content_summary": "说明所选硬件的品牌、型号、技术参数，以及这些硬件在实际应用中的可靠性和稳定性。提供相关认证和测试报告。"
+            },
+            {
+              "sub_section_title": "1.3.2 软件平台可行性",
+              "content_summary": "描述远程管理平台的架构、功能、用户界面，以及其在实际应用中的易用性和可扩展性。提供平台截图和演示。"
+            },
+            {
+              "sub_section_title": "1.3.3 安装实施可行性",
+              "content_summary": "提供详细的安装方案，包括安装流程、施工步骤、安全措施等，确保方案切实可行，具备可操作性。"
+            }
+          ]
+        },
+        {
+          "section_title": "1.4 节能效果（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "1.4.1 节能方案描述",
+              "content_summary": "详细描述自动调光策略，包括光照强度与亮度之间的关系，以及节能模式的设定。说明如何实现至少30%的电能节省。"
+            },
+            {
+              "sub_section_title": "1.4.2 节能效果评估",
+              "content_summary": "提供节能效果的计算方法和数据，例如，通过模拟计算或实际测试，证明节能效果的显著性。提供相关数据和图表。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_title": "第二章 产品质量（30分）",
+      "sections": [
+        {
+          "section_title": "2.1 灯具质量（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "2.1.1 LED灯具技术参数",
+              "content_summary": "详细说明LED灯具的品牌、型号、功率、光效、色温、显色指数等技术参数，确保满足技术要求。提供产品技术参数表和认证报告。"
+            },
+            {
+              "sub_section_title": "2.1.2 灯具寿命",
+              "content_summary": "提供LED灯具的寿命测试报告，证明其寿命≥50,000小时。说明灯具的散热设计和材料选择，以确保其长期稳定运行。"
+            }
+          ]
+        },
+        {
+          "section_title": "2.2 控制器性能（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "2.2.1 通信方式",
+              "content_summary": "详细描述控制器的通信方式，包括4G/5G通信的频段、速率、覆盖范围等。说明通信的可靠性和稳定性。"
+            },
+            {
+              "sub_section_title": "2.2.2 远程控制功能",
+              "content_summary": "描述控制器的远程控制功能，包括开关灯、调光、状态监测等。提供远程控制的界面截图和操作说明。"
+            },
+            {
+              "sub_section_title": "2.2.3 控制器稳定性",
+              "content_summary": "提供控制器的稳定性测试报告，证明其在各种环境条件下的稳定运行。说明控制器的电源管理和保护措施。"
+            }
+          ]
+        },
+        {
+          "section_title": "2.3 传感器精度（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "2.3.1 传感器类型",
+              "content_summary": "说明所使用的传感器类型，包括光照传感器、温度传感器、湿度传感器。提供传感器的品牌、型号和技术参数。"
+            },
+            {
+              "sub_section_title": "2.3.2 传感器精度",
+              "content_summary": "提供传感器的精度测试报告，证明其数据采集的准确性和可靠性。说明传感器的校准方法和维护周期。"
+            },
+            {
+              "sub_section_title": "2.3.3 数据传输",
+              "content_summary": "说明传感器数据的传输方式和频率，确保数据能够实时、准确地传输到远程管理平台。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_title": "第三章 售后服务（20分）",
+      "sections": [
+        {
+          "section_title": "3.1 维护响应时间（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "3.1.1 响应时间承诺",
+              "content_summary": "明确承诺24小时内响应故障报修，并提供详细的响应流程，包括电话、邮件、现场响应等方式。"
+            },
+            {
+              "sub_section_title": "3.1.2 应急预案",
+              "content_summary": "提供应急预案，说明在紧急情况下如何快速响应和解决问题，确保路灯系统的正常运行。"
+            }
+          ]
+        },
+        {
+          "section_title": "3.2 维护服务质量（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "3.2.1 免费维护服务",
+              "content_summary": "详细描述2年免费维护服务的内容，包括定期巡检、故障排查、更换备件等。提供维护服务计划。"
+            },
+            {
+              "sub_section_title": "3.2.2 维护团队",
+              "content_summary": "介绍维护团队的资质、经验和人员配置，确保能够提供专业的维护服务。提供团队成员的简历和资质证明。"
+            },
+            {
+              "sub_section_title": "3.2.3 维护记录",
+              "content_summary": "说明维护记录的保存方式和内容，确保维护过程可追溯。提供维护记录的模板。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_title": "第四章 价格（10分）",
+      "sections": [
+        {
+          "section_title": "4.1 报价合理性（10分）",
+          "sub_sections": [
+            {
+              "sub_section_title": "4.1.1 报价明细",
+              "content_summary": "提供详细的报价明细，包括灯具、控制器、传感器、安装、维护等各项费用。说明价格的构成和计算依据。"
+            },
+            {
+              "sub_section_title": "4.1.2 性价比分析",
+              "content_summary": "分析本方案的性价比，与其他竞争方案进行比较，说明本方案在性能、质量、服务和价格方面的优势。"
             }
           ]
         }

@@ -6,42 +6,25 @@
 
 这个项目主要是应付八股文的写作，几分钟即可生成10万字技术文档。非常节省时间。
 
-接口：
-http://localhost:5001/generate_outline
-http://localhost:5001/generate_document
-http://localhost:5001/show_outline
-http://localhost:5001/show_document
-http://localhost:5001/show_input
-http://localhost:5001/save_input
+
 
 
 ## 运行环境
 
 - Python 3.x
-- Flask
 - 大模型API（推荐使用OpenRouter的API）
 
 ## 安装与配置
 
 1. **安装依赖**
+   ```bash
+   conda create -n autobid
+   conda activate autobid
+   ```
 
    ```bash
    pip install -r requirements.txt
    ```
-
-2. **准备输入文件**
-
-   在 `bidding/inputs/` 目录下准备以下文件：
-
-   - `tech.md`：将招标文件的技术要求手动复制粘贴到这里。
-   - `score.md`：将招标文件的评分标准手动复制粘贴到这里。
-
-3. **配置大模型API**
-
-   本项目推荐使用OpenRouter的API，因其支持Gemini FLash模型，生成速度快且内容信息密度高。请按照以下步骤配置：
-
-   - 注册OpenRouter账户并获取API Key。
-   - 将API Key填入 `config.py` 文件的相应位置。
 
 ## 运行程序
 
@@ -51,33 +34,10 @@ http://localhost:5001/save_input
    python app.py
    ```
 
-   服务器默认运行在 `http://localhost:5000`。
+   服务器默认运行在 `http://localhost:5001`。
 
-2. **生成投标文件**
-
-   生成投标文件分为两个步骤：生成大纲和生成完整文档。
-
-   - **生成大纲**
-
-     ```bash
-     curl -X POST http://localhost:5000/generate_outline
-     ```
-
-     此操作会：
-     - 读取 `tech.md` 和 `score.md` 文件。
-     - 调用大模型生成大纲。
-     - 将大纲保存到 `outputs/outline.json` 和 `outputs/outline.md`。
-
-   - **生成完整文档**
-
-     ```bash
-     curl -X POST http://localhost:5000/generate_document
-     ```
-
-     此操作会：
-     - 读取已生成的大纲。
-     - 生成指定章节的内容。
-     - 保存到 `outputs/content/` 目录。
+3. **打包成可执行文件**
+ pyinstaller --name good-autobid-0.2 --add-data "templates;templates" --add-data "res;res" --add-data "inputs;inputs" --add-data "outputs;outputs" --add-data "config.json;."  --hidden-import bidding_workflow --paths "."  app.py
 
 ## 实测
 
