@@ -94,21 +94,28 @@ class LLMClient:
                     "top_p": Config.TOP_P
                 }
 
-                logger.debug(f"Sending request with params: {json.dumps(request_params, ensure_ascii=False)}")
-
+                logger.info(f"API调用信息:")
+                logger.info(f"Model: {Config.LLM_MODEL}")
+                logger.info(f"Request Data: {json.dumps(request_params, ensure_ascii=False)}")
+                
                 async with self.session.post(
-                    "chat/completions",
+                    "v1/chat/completions",
                     json=request_params,
                     timeout=Config.TIMEOUT,
                     ssl=False  # 禁用 SSL 验证，如果需要的话
                 ) as response:
+                    # 获取完整的请求URL
+                    full_url = str(response.request_info.url)
+                    logger.info(f"完整请求URL: {full_url}")
+                    logger.info(f"请求Headers: {response.request_info.headers}")
+                    
                     # 首先记录原始响应
                     response_text = await response.text()
                     logger.debug(f"Raw API response: {response_text}")
                     
                     # 如果状态码不是 200，记录错误并重试
                     if response.status != 200:
-                        logger.error(f"API returned status {response.status}: {response_text}")
+                        logger.error(f"完整的API错误响应: {response_text}")
                         raise ValueError(f"API returned status {response.status}")
 
                     # 解析响应

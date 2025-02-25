@@ -1,4 +1,4 @@
-from quart import Quart, jsonify, request, render_template
+from quart import Quart, jsonify, request, render_template, send_file
 from quart_cors import cors
 from bidding_workflow import BiddingWorkflow
 import logging
@@ -342,6 +342,14 @@ async def save_outline():
     except Exception as e:
         logger.error(f"Error saving outline: {str(e)}", exc_info=True)
         return jsonify({"error": str(e)}), 500
+
+@app.route('/res/<path:filename>')
+async def serve_resource(filename):
+    try:
+        return await send_file(f'res/{filename}')
+    except Exception as e:
+        logger.error(f"Error serving resource {filename}: {e}")
+        return "Resource not found", 404
 
 if __name__ == '__main__':
     # 检查webui目录是否存在

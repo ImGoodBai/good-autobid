@@ -4,3 +4,4 @@ openai==1.63.2
 PyYAML==6.0.2
 PyYAML==6.0.2
 quart==0.20.0
+quart_cors

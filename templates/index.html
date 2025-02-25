@@ -47,7 +47,8 @@
     <div class="col-md-2 sidebar py-3">
         <h5 class="mb-3">功能导航</h5>
         <div class="nav flex-column nav-pills">
-            <button class="nav-link active mb-2" id="input-tab" data-bs-toggle="pill" data-bs-target="#input">一 需求文档</button>
+            <button class="nav-link active mb-2" id="welcome-tab" data-bs-toggle="pill" data-bs-target="#welcome">欢迎</button>
+            <button class="nav-link mb-2" id="input-tab" data-bs-toggle="pill" data-bs-target="#input">一 需求文档</button>
             <button class="nav-link mb-2" id="outline-tab" data-bs-toggle="pill" data-bs-target="#outline">二 大纲生成</button>
             <button class="nav-link mb-2" id="document-tab" data-bs-toggle="pill" data-bs-target="#document">三 终稿生成</button>
         </div>
@@ -58,8 +59,48 @@
         <div id="status" class="alert alert-info d-none"></div>
         
         <div class="tab-content">
+            <!-- 欢迎页 -->
+            <div class="tab-pane fade show active" id="welcome">
+                <div class="container py-4">
+                    <h2 class="text-center mb-4">欢迎使用 GoodAI 标书生成器</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p>GoodAI 标书生成器，一个基于 AI 的自动化标书生成工具，作者古德白。一次可以生成20万字的专业标书技术方案。已支持DeepSeek接入，开源免费使用。已打包好exe可执行文件，欢迎下载使用。</p>
+                            <h4>主要功能</h4>
+                            <ul>
+                                <li>基于AI技术，快速生成专业标书</li>
+                                <li>支持技术需求和评分标准的智能分析</li>
+                                <li>自动生成结构化大纲</li>
+                                <li>根据大纲自动生成完整标书文档</li>
+                            </ul>
+
+                            <h4>使用流程</h4>
+                            <ol>
+                                <li>在"需求文档"页面填写技术需求和评分标准</li>
+                                <li>切换到"大纲生成"页面，点击生成大纲</li>
+                                <li>确认大纲无误后，切换到"终稿生成"页面生成完整文档</li>
+                            </ol>
+
+                            <h4>注意事项</h4>
+                            <ul>
+                                <li>使用前请确保已正确配置API密钥</li>
+                                <li>每一步操作前请确保前序步骤已完成</li>
+                                <li>文档生成可能需要较长时间，请耐心等待</li>
+                                <li>建议定期保存已编辑的内容</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <h4 class="mb-3">联系作者</h4>
+                        <img src="res/baihuaagent.jpg" alt="作者二维码" style="max-width: 200px;" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
             <!-- 需求输入与生成页面 -->
-            <div class="tab-pane fade show active" id="input">
+            <div class="tab-pane fade" id="input">
                 <button class="btn btn-primary mb-3" id="save-btn">保存</button>
                 <div class="row editor-container">
                     <div class="col-md-6">
@@ -80,6 +121,7 @@
                         <button class="btn btn-success" id="generate-outline-btn">生成大纲</button>
                         <button class="btn btn-primary" id="save-outline-btn">保存大纲</button>
                     </div>
+                    <p>生成大纲前，确保第一步中的技术需求和评分标准已经填写完成。</p>
                     <textarea id="outline-content" class="form-control outline-editor"></textarea>
                 </div>
             </div>
@@ -88,6 +130,7 @@
             <div class="tab-pane fade" id="document">
                 <div class="mb-3">
                     <button class="btn btn-info mb-3" id="generate-doc-btn">生成文档</button>
+                    <p>生成文档前，确保第二步大纲已经生成，生成时间和大纲中的章节数量有关，生成时间较长，完成后刷新本页可以看到最新内容。</p>
                     <div id="document-content" class="border p-3 bg-light"></div>
                 </div>
             </div>
