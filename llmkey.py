@@ -99,7 +99,7 @@ class LLMClient:
                 logger.info(f"Request Data: {json.dumps(request_params, ensure_ascii=False)}")
                 
                 async with self.session.post(
-                    "v1/chat/completions",
+                    "chat/completions",
                     json=request_params,
                     timeout=Config.TIMEOUT,
                     ssl=False  # 禁用 SSL 验证，如果需要的话
