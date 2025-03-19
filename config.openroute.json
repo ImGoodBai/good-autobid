@@ -1,8 +1,8 @@
 {
     "llm": {
-        "api_key": "",
-        "api_base": "https://ark.cn-beijing.volces.com/api/v3",
-        "model": "deepseek-r1-distill-qwen-7b-250120",
+        "api_key": "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",
+        "api_base": "https://openrouter.ai/api",
+        "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
         "max_tokens": 8192,
         "temperature": 0.7,
         "top_p": 0.1,

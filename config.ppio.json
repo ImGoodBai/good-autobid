@@ -1,16 +1,16 @@
 {
     "llm": {
-        "api_key": "",
-        "api_base": "https://ark.cn-beijing.volces.com/api/v3",
-        "model": "deepseek-r1-distill-qwen-7b-250120",
-        "max_tokens": 8192,
+        "api_key": "sk_AYcnE6EtZLKjC4Cx6sCi4ipu9bz7nhv2RwFWHP8iN24",
+        "api_base": "https://api.ppinfra.com/v3/openai",
+        "model": "qwen/qwq-32b",
+        "max_tokens": 4000,
         "temperature": 0.7,
         "top_p": 0.1,
         "timeout": 31
     },
     "retry": {
         "max_retries": 3,
-        "delay": 3,
+        "delay": 2,
         "backoff": 1.5
     },
     "api": {

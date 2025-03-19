@@ -150,30 +150,30 @@ class BiddingWorkflow:
             
             # 检查文件是否存在
             if not tech_file.exists():
-                logger.error(f"Tech file not found: {tech_file}")
-                raise FileNotFoundError(f"Tech file not found: {tech_file}")
+                logger.error(f"技术文件未找到: {tech_file}")
+                raise FileNotFoundError(f"技术文件未找到: {tech_file}")
             if not score_file.exists():
-                logger.error(f"Score file not found: {score_file}")
-                raise FileNotFoundError(f"Score file not found: {score_file}")
+                logger.error(f"评分文件未找到: {score_file}")
+                raise FileNotFoundError(f"评分文件未找到: {score_file}")
             
             # 检查文件是否为空
             if tech_file.stat().st_size == 0:
-                logger.error("Tech file is empty")
-                raise ValueError("Tech file is empty")
+                logger.error("技术文件为空")
+                raise ValueError("技术文件为空")
             if score_file.stat().st_size == 0:
-                logger.error("Score file is empty")
-                raise ValueError("Score file is empty")
+                logger.error("评分文件为空")
+                raise ValueError("评分文件为空")
             
             with open(tech_file, 'r', encoding='utf-8') as f:
                 self.tech_content = f.read()
-                logger.info(f"Loaded tech file, size: {len(self.tech_content)} chars")
+                logger.info(f"已加载技术文件，大小: {len(self.tech_content)} 字符")
             
             with open(score_file, 'r', encoding='utf-8') as f:
                 self.score_content = f.read()
-                logger.info(f"Loaded score file, size: {len(self.score_content)} chars")
+                logger.info(f"已加载评分文件，大小: {len(self.score_content)} 字符")
             
         except Exception as e:
-            logger.error(f"Error loading input files: {e}", exc_info=True)
+            logger.error(f"加载输入文件时出错: {e}", exc_info=True)
             raise
             
     def clean_json_response(self, response: str) -> str:
@@ -199,7 +199,7 @@ class BiddingWorkflow:
                 parsed = json.loads(cleaned)
                 return json.dumps(parsed, ensure_ascii=False)
             except json.JSONDecodeError as e:
-                logger.warning(f"Initial JSON parsing failed: {e}")
+                logger.warning(f"初始JSON解析失败: {e}")
                 
                 # 尝试修复常见的 JSON 格式问题
                 # 1. 处理未转义的引号
@@ -211,7 +211,7 @@ class BiddingWorkflow:
                 # 3. 处理未闭合的引号
                 quote_count = cleaned.count('"')
                 if quote_count % 2 != 0:
-                    logger.warning("Detected unclosed quotes, attempting to fix")
+                    logger.warning("检测到未闭合的引号，尝试修复")
                     # 找到最后一个完整的 JSON 结构
                     last_brace = cleaned.rfind('}')
                     if last_brace > 0:
@@ -223,22 +223,22 @@ class BiddingWorkflow:
                 # 再次尝试解析
                 try:
                     parsed = json.loads(cleaned)
-                    logger.info("Successfully fixed and parsed JSON")
+                    logger.info("成功修复并解析JSON")
                     return json.dumps(parsed, ensure_ascii=False)
                 except json.JSONDecodeError as e:
-                    logger.error(f"Failed to fix JSON: {e}")
-                    logger.error(f"Problematic JSON:\n{cleaned}")
+                    logger.error(f"修复JSON失败: {e}")
+                    logger.error(f"有问题的JSON:\n{cleaned}")
                     raise ValueError(f"Could not parse JSON response: {e}")
                 
         except Exception as e:
-            logger.error(f"Error cleaning JSON response: {e}")
-            logger.error(f"Original response:\n{response}")
+            logger.error(f"清理JSON响应时出错: {e}")
+            logger.error(f"原始响应:\n{response}")
             raise
 
     async def generate_outline(self) -> str:
         """生成大纲"""
         try:
-            logger.info("=== Starting Outline Generation ===")
+            logger.info("=== 开始生成大纲 ===")
             
             # 初始化对话
             messages = [{"role": "system", "content": Prompts.OUTLINE_SYSTEM_ROLE}]
@@ -269,7 +269,7 @@ class BiddingWorkflow:
             )
             
             if not outline_json:
-                logger.error("Failed to generate outline")
+                logger.error("生成大纲失败")
                 return None
                 
             # 保存大纲
@@ -278,7 +278,7 @@ class BiddingWorkflow:
             return outline_json
             
         except Exception as e:
-            logger.error(f"Error generating outline: {e}")
+            logger.error(f"生成大纲时出错: {e}")
             raise
 
     def split_long_text(self, text: str, max_length: int = 3000) -> List[str]:
@@ -332,20 +332,20 @@ class BiddingWorkflow:
             if isinstance(outline_json, str):
                 try:
                     # 记录原始输入
-                    logger.debug("=== Input JSON String ===")
+                    logger.debug("=== 输入JSON字符串 ===")
                     logger.debug(outline_json)
-                    logger.debug("=== End Input JSON String ===")
+                    logger.debug("=== 输入JSON字符串结束 ===")
                     
                     data = json.loads(outline_json)
-                    logger.debug("Successfully parsed JSON string")
+                    logger.debug("成功解析JSON字符串")
                 except json.JSONDecodeError as e:
-                    logger.error(f"Invalid JSON response: {e}")
-                    logger.debug(f"Problematic JSON: {outline_json}")
+                    logger.error(f"无效的JSON响应: {e}")
+                    logger.debug(f"有问题的JSON: {outline_json}")
                     raise
             else:
                 data = outline_json
             
-            logger.debug(f"Parsing outline data: {json.dumps(data, ensure_ascii=False)}")
+            logger.debug(f"解析大纲数据: {json.dumps(data, ensure_ascii=False)}")
             
             # 验证必要的字段
             if not isinstance(data, dict):
@@ -393,7 +393,7 @@ class BiddingWorkflow:
             return Outline(body_paragraphs=chapters)
         
         except Exception as e:
-            logger.error(f"Error parsing outline JSON: {e}", exc_info=True)
+            logger.error(f"解析大纲JSON时出错: {e}", exc_info=True)
             raise
 
     def generate_content_prompt(self, section: OutlineNode, context: str) -> str:
@@ -459,7 +459,7 @@ class BiddingWorkflow:
     def save_outline(self):
         """保存大纲到文件"""
         if not self.outline:
-            logger.error("No outline to save")
+            logger.error("没有大纲可保存")
             return
             
         try:
@@ -468,17 +468,17 @@ class BiddingWorkflow:
             json_path = Config.OUTLINE_DIR / 'outline.json'
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(outline_dict, f, ensure_ascii=False, indent=2)
-            logger.info(f"Saved outline JSON to {json_path}")
+            logger.info(f"已保存大纲JSON到 {json_path}")
             
             # 保存Markdown格式（用于展示）
             md_content = self.outline_to_markdown()
             md_path = Config.OUTLINE_DIR / 'outline.md'
             with open(md_path, 'w', encoding='utf-8') as f:
                 f.write(md_content)
-            logger.info(f"Saved outline markdown to {md_path}")
+            logger.info(f"已保存大纲Markdown到 {md_path}")
             
         except Exception as e:
-            logger.error(f"Error saving outline: {e}", exc_info=True)
+            logger.error(f"保存大纲时出错: {e}", exc_info=True)
             raise
 
     def save_content(self, section_title: str, content: str):
@@ -512,10 +512,10 @@ class BiddingWorkflow:
         start_time = time.time()
         try:
             if not self.outline:
-                logger.error("No outline available")
+                logger.error("没有可用的大纲")
                 return False
 
-            logger.info("=== Starting Content Generation ===")
+            logger.info("=== 开始生成内容 ===")
             
             # 收集所有需要生成的章节
             sections_to_generate = []
@@ -529,7 +529,7 @@ class BiddingWorkflow:
                         })
 
             total_sections = len(sections_to_generate)
-            logger.info(f"Found {total_sections} sections to generate")
+            logger.info(f"发现 {total_sections} 个章节需要生成")
 
             # 使用信号量控制并发数为15（略小于理论值16.67，留出余量）
             semaphore = asyncio.Semaphore(15)
@@ -559,19 +559,19 @@ class BiddingWorkflow:
                 
                 # 进度报告
                 completed = len(results)
-                logger.info(f"Progress: {completed}/{total_sections} sections completed")
+                logger.info(f"进度: {completed}/{total_sections} 章节已完成")
             
             # 处理结果
             organized_results = self._organize_results(results, sections_to_generate)
             success = await self._save_results_async(organized_results)
             
             elapsed_time = time.time() - start_time
-            logger.info(f"Content generation completed in {elapsed_time:.2f} seconds")
+            logger.info(f"内容生成在 {elapsed_time:.2f} 秒内完成")
             
             return success
 
         except Exception as e:
-            logger.error(f"Error generating content: {e}")
+            logger.error(f"生成内容时出错: {e}")
             return False
 
     def _organize_results(self, results: List[Dict], sections: List[Dict]) -> Dict:
@@ -630,7 +630,7 @@ class BiddingWorkflow:
             
             return True
         except Exception as e:
-            logger.error(f"Error saving results: {e}")
+            logger.error(f"保存结果时出错: {e}")
             return False
 
     def save_outline_json(self, outline_json: str):
@@ -643,17 +643,17 @@ class BiddingWorkflow:
             json_file = Config.OUTLINE_DIR / 'outline.json'
             with open(json_file, 'w', encoding='utf-8') as f:
                 f.write(outline_json)
-            logger.info(f"Saved outline JSON to {json_file}")
+            logger.info(f"已保存大纲JSON到 {json_file}")
             
             # 同时保存一个 Markdown 格式的版本，方便查看
             md_file = Config.OUTLINE_DIR / 'outline.md'
             md_content = self._convert_outline_to_markdown(outline_json)
             with open(md_file, 'w', encoding='utf-8') as f:
                 f.write(md_content)
-            logger.info(f"Saved outline Markdown to {md_file}")
+            logger.info(f"已保存大纲Markdown到 {md_file}")
             
         except Exception as e:
-            logger.error(f"Error saving outline: {e}")
+            logger.error(f"保存大纲时出错: {e}")
             raise
 
     def _convert_outline_to_markdown(self, outline_json: str) -> str:
@@ -681,7 +681,7 @@ class BiddingWorkflow:
             return "\n".join(md_lines)
             
         except Exception as e:
-            logger.error(f"Error converting outline to markdown: {e}")
+            logger.error(f"将大纲转换为markdown时出错: {e}")
             raise
 
 def dict_to_outline(data: dict) -> OutlineNode:

@@ -66,13 +66,12 @@
                     
                     <div class="card mb-4">
                         <div class="card-body">
-                            <p>GoodAI 标书生成器，一个基于 AI 的自动化标书生成工具，作者古德白。一次可以生成20万字的专业标书技术方案。已支持DeepSeek接入，开源免费使用。已打包好exe可执行文件，欢迎下载使用。基于项目二次开发：https://github.com/riddle911/autobid</p>
-                            <h4>主要功能</h4>
+                            <p>主页：<a href="https://100agents.feishu.cn/wiki/QhO2wlMr0i0AVJkvk8OcxI3Hnxe">https://100agents.feishu.cn/wiki/QhO2wlMr0i0AVJkvk8OcxI3Hnxe</a></p>
+                            <p>GoodAI 标书生成器，一个基于 AI 的自动化标书生成工具，作者古德白。一次可以生成20万字的专业标书技术方案。已支持DeepSeek接入，开源免费使用。已打包好exe可执行文件，欢迎下载使用。不懂技术不会配置API的，等下版我会出一版内置AI的，开箱即用。</p>
+                            <h4>更新说明</h4>
                             <ul>
-                                <li>基于AI技术，快速生成专业标书</li>
-                                <li>支持技术需求和评分标准的智能分析</li>
-                                <li>自动生成结构化大纲</li>
-                                <li>根据大纲自动生成完整标书文档</li>
+                                <li>2025-03-19 更新说明：配置页加了API测试按钮，保存前先测试。遇到问题先看控制台输出的提示信息，已统一翻译为中文。</li>
+                                <li>2025-03-19 更新说明：终稿文档页面新增导出为Word(docx)功能，可直接将生成的文档导出为Word格式。</li>
                             </ul>
 
                             <h4>使用流程</h4>
@@ -80,6 +79,7 @@
                                 <li>在"需求文档"页面填写技术需求和评分标准</li>
                                 <li>切换到"大纲生成"页面，点击生成大纲</li>
                                 <li>确认大纲无误后，切换到"终稿生成"页面生成完整文档</li>
+                                <li>可以将生成的文档导出为Word格式</li>
                             </ol>
 
                             <h4>注意事项</h4>
@@ -129,7 +129,10 @@
             <!-- 文档查看页面 -->
             <div class="tab-pane fade" id="document">
                 <div class="mb-3">
-                    <button class="btn btn-info mb-3" id="generate-doc-btn">生成文档</button>
+                    <div class="btn-group mb-3">
+                        <button class="btn btn-info" id="generate-doc-btn">生成文档</button>
+                        <button class="btn btn-success" id="export-docx-btn">导出为Word</button>
+                    </div>
                     <p>生成文档前，确保第二步大纲已经生成，生成时间和大纲中的章节数量有关，生成时间较长，完成后刷新本页可以看到最新内容。</p>
                     <div id="document-content" class="border p-3 bg-light"></div>
                 </div>
@@ -140,6 +143,8 @@
 {% endblock %}
 
 {% block extra_js %}
+<!-- 添加html-docx-js库 -->
+<script src="https://cdn.jsdelivr.net/npm/html-docx-js/dist/html-docx.min.js"></script>
 <script>
     // 工具函数：显示状态信息
     function showStatus(message, type = 'info') {
@@ -224,6 +229,65 @@
                 await refreshDocument();
             } catch (error) {
                 console.error('生成文档失败:', error);
+            }
+        });
+
+        // 导出为Word文档按钮
+        document.getElementById('export-docx-btn').addEventListener('click', async () => {
+            try {
+                showStatus('正在准备导出...', 'info');
+                
+                // 获取文档内容
+                const result = await callApi('/show_document');
+                if (!result.data) {
+                    throw new Error('没有可导出的文档内容');
+                }
+                
+                // 将Markdown转换为HTML
+                const htmlContent = marked.parse(result.data);
+                
+                // 添加基本样式
+                const styledHtml = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>技术方案</title>
+                        <style>
+                            body { font-family: 'SimSun', serif; font-size: 12pt; line-height: 1.5; }
+                            h1 { font-size: 18pt; font-weight: bold; margin-top: 24pt; margin-bottom: 6pt; }
+                            h2 { font-size: 16pt; font-weight: bold; margin-top: 18pt; margin-bottom: 6pt; }
+                            h3 { font-size: 14pt; font-weight: bold; margin-top: 14pt; margin-bottom: 6pt; }
+                            p { margin-bottom: 10pt; }
+                        </style>
+                    </head>
+                    <body>
+                        ${htmlContent}
+                    </body>
+                    </html>
+                `;
+                
+                // 转换HTML为docx
+                const converted = htmlDocx.asBlob(styledHtml);
+                
+                // 创建下载链接
+                const url = URL.createObjectURL(converted);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = '技术方案.docx';
+                document.body.appendChild(a);
+                a.click();
+                
+                // 清理
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 0);
+                
+                showStatus('导出成功', 'success');
+            } catch (error) {
+                console.error('导出Word文档失败:', error);
+                showStatus('导出失败: ' + error.message, 'danger');
             }
         });
 

@@ -26,8 +26,14 @@
     <!-- LLM配置 -->
     <div class="config-section">
         <h3 class="config-title">LLM配置</h3>
-        <p>所有与openai api兼容的都可以，包括硅基流动和<a href="https://ppinfra.com/user/register?invited_by=8G3MLV" target="_blank">欧派云</a>版的DeepSeek</p>
+        <p>所有与openai api兼容的都可以，包括硅基流动和<a href="https://ppinfra.com/user/register?invited_by=8G3MLV" target="_blank">欧派云</a>版的DeepSeek。国内推荐使用火山，有条件的最好国外的openrouter api。</p>
         <div class="mb-3">
+            <div class="mb-3 mt-3">
+                <button class="btn btn-outline-primary" type="button" onclick="testLLMAPI()">
+                    测试API连接
+                </button>
+                <span id="api-test-result" class="ms-2"></span>
+            </div>
             <label for="llm_api_key" class="form-label">API密钥</label>
             <div class="input-group">
                 <input type="password" class="form-control" id="llm_api_key" name="llm.api_key">
@@ -36,8 +42,9 @@
                 </button>
             </div>
         </div>
+
         <div class="mb-3">
-            <label for="llm_api_base" class="form-label">API Base URL</label>
+            <label for="llm_api_base" class="form-label">API Base URL（去掉最后的/chat/completions）</label>
             <input type="text" class="form-control" id="llm_api_base" name="llm.api_base">
         </div>
         <div class="mb-3">
@@ -60,6 +67,7 @@
             <label for="llm_timeout" class="form-label">超时时间（秒）</label>
             <input type="number" class="form-control" id="llm_timeout" name="llm.timeout">
         </div>
+
     </div>
 
     <!-- 重试配置 -->
@@ -115,6 +123,7 @@
 
 {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+<script src="/res/llm-api-test.js"></script>
 <script>
     // 页面加载时获取配置
     document.addEventListener('DOMContentLoaded', loadConfig);

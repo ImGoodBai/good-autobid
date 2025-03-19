@@ -18,8 +18,8 @@
 
 1. **安装依赖**
    ```bash
-   conda create -n autobid
-   conda activate autobid
+   conda create -n autobid3 python=3.11
+   conda activate autobid3
    ```
 
    ```bash
@@ -34,11 +34,12 @@
    python app.py
    ```
 
-   服务器默认运行在 `http://localhost:5001`。
+   服务器默认运行在 `http://localhost:5005`。
 
 3. **打包成可执行文件**
- pyinstaller --name good-autobid-0.2 --add-data "templates;templates" --add-data "res;res" --add-data "inputs;inputs" --add-data "outputs;outputs" --add-data "config.json;."  --hidden-import bidding_workflow --paths "."  app.py
-
+pip install pyinstaller
+ python -m PyInstaller  --name good-autobid-0.5 --add-data "templates;templates" --add-data "res;res" --add-data "inputs;inputs" --add-data "outputs;outputs" --add-data "config.json;."  --hidden-import bidding_workflow --paths "."  app.py
+ 
 ## 实测
 
 以下为作者实测数据：

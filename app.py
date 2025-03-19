@@ -28,19 +28,19 @@ async def generate_outline():
             request_data = {}
         
         async with BiddingWorkflow() as workflow:
-            logger.info("Starting outline generation")
+            logger.info("开始生成大纲")
             
             # 加载输入文件
-            logger.info("Loading input files")
+            logger.info("加载输入文件")
             workflow.load_input_files()
             
             # 生成大纲
-            logger.info("Generating outline")
+            logger.info("生成大纲")
             outline_json = await workflow.generate_outline()
             if not outline_json:
                 return jsonify({
                     "code": 1,
-                    "message": "Failed to generate outline",
+                    "message": "生成大纲失败",
                     "data": None
                 }), 500
             
@@ -63,7 +63,7 @@ async def generate_outline():
             return jsonify(response_data)
             
     except Exception as e:
-        logger.error(f"Error in create_outline: {str(e)}", exc_info=True)
+        logger.error(f"创建大纲时出错: {str(e)}", exc_info=True)
         return jsonify({
             "code": 1,
             "message": str(e),
@@ -85,15 +85,15 @@ async def generate_document():
         # 生成完整内容
         success = await workflow.generate_full_content_async()
         if not success:
-            return jsonify({"status": "error", "message": "Failed to generate content"}), 500
+            return jsonify({"status": "error", "message": "生成文档失败"}), 500
         
         return jsonify({
             "status": "success",
-            "message": "Document generated successfully"
+            "message": "文档生成成功"
         })
         
     except Exception as e:
-        logger.error(f"Error generating document: {e}", exc_info=True)
+        logger.error(f"生成文档时出错: {e}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
     finally:
         await workflow.llm_client.close()
@@ -109,7 +109,7 @@ async def show_outline():
             "data": outline_content
         })
     except Exception as e:
-        logger.error(f"Error reading outline.json: {str(e)}", exc_info=True)
+        logger.error(f"读取outline.json时出错: {str(e)}", exc_info=True)
         return jsonify({
             "code": 1,
             "message": str(e),
@@ -127,7 +127,7 @@ async def show_document():
             "data": content
         })
     except Exception as e:
-        logger.error(f"Error reading content.md: {str(e)}", exc_info=True)
+        logger.error(f"读取content.md时出错: {str(e)}", exc_info=True)
         return jsonify({
             "code": 1,
             "message": str(e),
@@ -160,7 +160,7 @@ async def show_input():
             }
         })
     except Exception as e:
-        logger.error(f"Error reading input files: {str(e)}", exc_info=True)
+        logger.error(f"读取输入文件时出错: {str(e)}", exc_info=True)
         return jsonify({
             "code": 1,
             "message": str(e),
@@ -185,11 +185,11 @@ async def save_input():
         
         return jsonify({
             "code": 0,
-            "message": "Input files saved successfully",
+            "message": "输入文件保存成功",
             "data": None
         })
     except Exception as e:
-        logger.error(f"Error saving input files: {str(e)}", exc_info=True)
+        logger.error(f"保存输入文件时出错: {str(e)}", exc_info=True)
         return jsonify({
             "code": 1,
             "message": str(e),
@@ -279,7 +279,7 @@ async def get_prompts():
         }
         return jsonify(variables)
     except Exception as e:
-        logger.error(f"Error getting prompts: {str(e)}", exc_info=True)
+        logger.error(f"获取提示词时出错: {str(e)}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/api/prompts/variables', methods=['POST'])
@@ -307,7 +307,7 @@ async def save_prompts():
         Config.save_config()
         return jsonify({"success": True})
     except Exception as e:
-        logger.error(f"Error saving prompts: {str(e)}", exc_info=True)
+        logger.error(f"保存提示词时出错: {str(e)}", exc_info=True)
         return jsonify({"success": False, "error": str(e)}), 500
 
 @app.route('/api/outline', methods=['GET'])
@@ -322,7 +322,7 @@ async def get_outline():
             
         return jsonify(outline_data)
     except Exception as e:
-        logger.error(f"Error reading outline: {str(e)}", exc_info=True)
+        logger.error(f"读取大纲时出错: {str(e)}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/api/save_outline', methods=['POST'])
@@ -340,9 +340,9 @@ async def save_outline():
         with open(outline_file, 'w', encoding='utf-8') as f:
             json.dump(outline_data, f, ensure_ascii=False, indent=2)
             
-        return jsonify({"message": "Outline saved successfully"})
+        return jsonify({"message": "大纲保存成功"})
     except Exception as e:
-        logger.error(f"Error saving outline: {str(e)}", exc_info=True)
+        logger.error(f"保存大纲时出错: {str(e)}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/res/<path:filename>')
@@ -350,13 +350,13 @@ async def serve_resource(filename):
     try:
         return await send_file(f'res/{filename}')
     except Exception as e:
-        logger.error(f"Error serving resource {filename}: {e}")
-        return "Resource not found", 404
+        logger.error(f"提供资源 {filename} 时出错: {e}")
+        return "资源未找到", 404
 
 if __name__ == '__main__':
     # 检查webui目录是否存在
     if not os.path.exists('templates'):
-        logger.warning("Templates directory not found.")
+        logger.warning("未找到模板目录。")
     
     # 在服务器启动前打开浏览器
     @app.before_serving
